@@ -1,18 +1,14 @@
 import { Resend } from "resend";
-
-export const config = {
-  api: {
-    bodyParser: false, // required for file upload
-  },
-};
+import Busboy from "busboy";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
-  if (req.method !== "POST") return res.status(405).end();
+  if (req.method !== "POST") {
+    return res.status(405).send("Method Not Allowed");
+  }
 
-  const busboy = require("busboy");
-  const bb = busboy({ headers: req.headers });
+  const bb = Busboy({ headers: req.headers });
 
   let name = "";
   let email = "";
@@ -39,12 +35,8 @@ export default async function handler(req, res) {
       await resend.emails.send({
         from: "onboarding@resend.dev",
         to: "tanvikumbhar6417@gmail.com",
-        subject: "New Job Application with CV",
-        html: `
-          <h3>New Application</h3>
-          <p>Name: ${name}</p>
-          <p>Email: ${email}</p>
-        `,
+        subject: "New Job Application",
+        html: `<p>Name: ${name}</p><p>Email: ${email}</p>`,
         attachments: [
           {
             filename: fileName,
