@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 215 25% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 12%;
+
+    --primary: 217 91% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 94%;
+    --secondary-foreground: 215 25% 12%;
+
+    --muted: 210 20% 95%;
+    --muted-foreground: 215 15% 50%;
+
+    --accent: 200 95% 48%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 20% 90%;
+    --input: 214 20% 90%;
+    --ring: 217 91% 50%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217 91% 60%;
+
+    /* Custom design tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 50%), hsl(200 95% 48%));
+    --gradient-dark: linear-gradient(135deg, hsl(215 25% 12%), hsl(217 50% 20%));
+    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    --shadow-glow: 0 0 40px -10px hsl(217 91% 50% / 0.4);
+    --shadow-card: 0 4px 24px -4px hsl(217 91% 50% / 0.1);
+    --shadow-elevated: 0 20px 60px -15px hsl(215 25% 12% / 0.15);
+
+    --navy: 215 25% 12%;
+    --navy-light: 217 50% 20%;
+    --electric: 200 95% 48%;
+    --steel: 210 15% 65%;
+  }
+
+  .dark {
+    --background: 215 25% 8%;
+    --foreground: 210 20% 95%;
+    --card: 215 25% 12%;
+    --card-foreground: 210 20% 95%;
+    --popover: 215 25% 12%;
+    --popover-foreground: 210 20% 95%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217 32% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 200 95% 48%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50 rounded-xl;
+    box-shadow: var(--shadow-card);
+  }
+  .glass-card-dark {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+  .gradient-bg {
+    background-image: var(--gradient-primary);
+  }
+  .gradient-dark-bg {
+    background-image: var(--gradient-dark);
+  }
+  .section-padding {
+    @apply py-20 md:py-28 px-4 md:px-8;
+  }
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-elevated);
+  }
+  .glow-border {
+    @apply relative;
+  }
+  .glow-border::before {
+    content: '';
+    @apply absolute -inset-px rounded-xl opacity-0 transition-opacity duration-300;
+    background: var(--gradient-primary);
+    z-index: -1;
+  }
+  .glow-border:hover::before {
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 20px hsl(217 91% 50% / 0.2); }
+    50% { box-shadow: 0 0 40px hsl(217 91% 50% / 0.5); }
+  }
+  /* Navbar navy background */
+  .bg-navy {
+    background-color: hsl(var(--navy));
+  }
+  .bg-navy\/95 {
+    background-color: hsl(var(--navy) / 0.95);
+  }
+  .bg-navy\/98 {
+    background-color: hsl(var(--navy) / 0.98);
+  }
+}
