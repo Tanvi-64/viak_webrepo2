@@ -4,7 +4,10 @@ import { MapPin, Clock, ArrowRight, Heart, Zap, GraduationCap,
   X, Upload, CheckCircle2, ChevronDown, ChevronUp } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import PageHero from "@/components/PageHero";
+import careersImg from "@/assets/careers.jpg";
 import { toast } from "sonner";
+import emailjs from "@emailjs/browser";
+import { supabase } from "@/lib/supabase";
 
 const perks = [
   { icon: Heart,         title: "Health Benefits",      desc: "Comprehensive medical insurance for you and your family." },
@@ -58,6 +61,22 @@ const jobs = [
 
 type Job = typeof jobs[0];
 
+const uploadResume = async (file: File) => {
+  const fileName = `${Date.now()}-${file.name}`;
+
+  const { data, error } = await supabase.storage
+    .from("resumes")
+    .upload(fileName, file);
+
+  if (error) throw error;
+
+  const { data: publicUrl } = supabase.storage
+    .from("resumes")
+    .getPublicUrl(fileName);
+
+  return publicUrl.publicUrl;
+};
+
 // ── Apply Modal ───────────────────────────────────────────────────────
 const ApplyModal = ({ job, onClose }: { job: Job; onClose: () => void }) => {
   const [name, setName] = useState("");
@@ -66,35 +85,63 @@ const ApplyModal = ({ job, onClose }: { job: Job; onClose: () => void }) => {
   const [sending, setSending] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files?.[0]) setCv(e.target.files[0]);
-  };
+const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const file = e.target.files?.[0];
+  if (!file) return;
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  if (file.size > 5 * 1024 * 1024) {
+    toast.error("File must be under 5MB");
+    return;
+  }
+
+  const allowed = ["application/pdf",
+    "application/msword",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+  ];
+
+  if (!allowed.includes(file.type)) {
+    toast.error("Only PDF, DOC, DOCX allowed");
+    return;
+  }
+
+  setCv(file);
+};
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     if (!name.trim() || !email.trim() || !cv) {
       toast.error("Please fill all required fields and upload your CV.");
       return;
     }
-    setSending(true);
-    try {
-      const formData = new FormData();
-      formData.append("name", name);
-      formData.append("email", email);
-      formData.append("cv", cv);
-      formData.append("role", job.title);
 
-      const res = await fetch("/api/apply", { method: "POST", body: formData });
-      if (res.ok) {
+    setSending(true);
+
+    try {
+      // 1) Upload resume to Cloudinary
+      const resumeUrl = await uploadResume(cv);
+
+      // 2) Send email with resume link
+      const result = await emailjs.send(
+        "service_5s2ungh",
+        "template_wdgsob4",
+        {
+          name: name,
+          email: email,
+          role: job.title,
+          resume_link: resumeUrl,
+        },
+        "fX4fnrb0-zYYW1he9"
+      );
+
+      if (result.status === 200) {
         setSubmitted(true);
         setTimeout(onClose, 2800);
       } else {
         toast.error("Submission failed. Please try again.");
       }
-    } catch {
-      // fallback — show success anyway (dev mode without API)
-      setSubmitted(true);
-      setTimeout(onClose, 2800);
+    } catch (err) {
+      toast.error("Error sending application.");
     } finally {
       setSending(false);
     }
@@ -116,65 +163,58 @@ const ApplyModal = ({ job, onClose }: { job: Job; onClose: () => void }) => {
         className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
         <div className="bg-[#1e3a8a] px-7 py-5 flex items-start justify-between">
           <div>
             <p className="text-[#38bdf8] text-[10px] font-bold tracking-[0.25em] uppercase mb-1">Apply Now</p>
             <h3 className="font-display text-xl font-bold text-white">{job.title}</h3>
-            <p className="text-white/55 text-xs mt-1">{job.experience} · {job.location} · {job.type}</p>
           </div>
-          <button onClick={onClose} className="text-white/60 hover:text-white transition-colors mt-1">
+          <button onClick={onClose} className="text-white/60 hover:text-white">
             <X size={20} />
           </button>
         </div>
 
         {submitted ? (
           <div className="flex flex-col items-center justify-center py-14 px-7 gap-4">
-            <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}
-              transition={{ type: "spring", stiffness: 260, damping: 18 }}>
-              <CheckCircle2 size={56} className="text-[#38bdf8]" />
-            </motion.div>
-            <p className="font-display font-bold text-xl text-foreground">Application Submitted!</p>
-            <p className="text-muted-foreground text-sm text-center leading-relaxed">
-              Thank you for applying for <strong>{job.title}</strong>. We'll review your application and get back to you soon.
-            </p>
+            <CheckCircle2 size={56} className="text-[#38bdf8]" />
+            <p className="font-display font-bold text-xl">Application Submitted!</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="px-7 py-6 flex flex-col gap-4">
-            {/* Name */}
             <div>
-              <label className="text-sm font-semibold text-foreground mb-1.5 block">Full Name *</label>
-              <input type="text" value={name} onChange={(e) => setName(e.target.value)}
-                placeholder="Your full name"
-                className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-border text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 transition-all" />
+              <label>Full Name *</label>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full border p-3 rounded-lg"
+              />
             </div>
 
-            {/* Email */}
             <div>
-              <label className="text-sm font-semibold text-foreground mb-1.5 block">Email Address *</label>
-              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@email.com"
-                className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-border text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 transition-all" />
+              <label>Email *</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full border p-3 rounded-lg"
+              />
             </div>
 
-            {/* CV Upload */}
             <div>
-              <label className="text-sm font-semibold text-foreground mb-1.5 block">Upload CV / Resume *</label>
-              <label className={`flex items-center gap-3 px-4 py-3.5 rounded-xl border-2 border-dashed cursor-pointer transition-all ${
-                cv ? "border-[#38bdf8] bg-[#e8f0fe]" : "border-border bg-slate-50 hover:border-[#1e3a8a]"
-              }`}>
-                <Upload size={18} className={cv ? "text-[#1e3a8a]" : "text-muted-foreground"} />
-                <span className={`text-sm truncate ${cv ? "text-[#1e3a8a] font-semibold" : "text-muted-foreground"}`}>
-                  {cv ? cv.name : "Click to upload PDF, DOC, DOCX"}
-                </span>
-                <input type="file" accept=".pdf,.doc,.docx" onChange={handleFile} className="hidden" />
-              </label>
-              <p className="text-muted-foreground text-xs mt-1">Max file size: 5MB</p>
+              <label>Upload Resume *</label>
+              <input
+                type="file"
+                accept=".pdf,.doc,.docx"
+                onChange={handleFile}
+              />
             </div>
 
-            <button type="submit" disabled={sending}
-              className="gradient-bg w-full py-3.5 rounded-xl font-bold text-white hover:opacity-90 transition-opacity flex items-center justify-center gap-2 mt-1 disabled:opacity-60">
-              {sending ? "Submitting..." : <><ArrowRight size={16} /> Submit Application</>}
+            <button
+              type="submit"
+              disabled={sending}
+              className="bg-blue-700 text-white py-3 rounded-lg"
+            >
+              {sending ? "Submitting..." : "Submit Application"}
             </button>
           </form>
         )}
@@ -274,7 +314,7 @@ const Careers = () => {
         title="Build Your"
         highlight="Career"
         desc="Join a team of passionate engineers shaping the future of industrial automation and precision manufacturing."
-        image="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1600&h=700&fit=crop"
+        image={careersImg}
       />
 
       {/* Culture */}

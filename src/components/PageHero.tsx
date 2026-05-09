@@ -6,9 +6,10 @@ interface PageHeroProps {
   highlight: string;
   desc: string;
   image: string;
+  descClassName?: string;
 }
 
-const PageHero = ({ label, title, highlight, desc, image }: PageHeroProps) => (
+const PageHero = ({ label, title, highlight, desc, image, descClassName }: PageHeroProps) => (
   <section className="relative overflow-hidden" style={{ height: 420 }}>
     <img
       src={image}
@@ -46,7 +47,7 @@ const PageHero = ({ label, title, highlight, desc, image }: PageHeroProps) => (
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.45 }}
-            className="text-white/70 mt-2 text-sm leading-relaxed"
+            className={descClassName ?? "text-white/70 mt-2 text-sm leading-relaxed"}
           >
             {desc}
           </motion.p>

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, MapPin, Phone, Mail, ArrowRight, Search, ChevronDown,
-  Cog, Cpu, Bot, Shield, Wrench, Zap, Truck, Layers, CircleDot,
+  Cog, Cpu, Bot, Shield, Wrench, Zap, Truck, Layers, CircleDot, Gauge,
   Video, Images } from "lucide-react";
 
 // ── Data ──────────────────────────────────────────────────────────────
@@ -16,12 +16,10 @@ const serviceItems = [
 ];
 
 const productItems = [
-  { icon: Cog,    label: "Jigs & Fixtures",                     slug: "jigs-fixtures" },
-  { icon: Cpu,    label: "Special Purpose Machines",            slug: "spm" },
-  { icon: Bot,    label: "Pick and Place Unit",                 slug: "pick-place" },
-  { icon: Wrench, label: "Tire Industries",                     slug: "tire-industry" },
-  { icon: Shield, label: "Industrial Washing Machine Parts",    slug: "washing-machine-parts" },
-  { icon: Zap,    label: "Conveying Systems",                   slug: "robotics-automation" },
+  { icon: Gauge,  label: "Hydraulics, Pneumatics & Servo Presses", slug: "hydraulics" },
+  { icon: Cpu,    label: "Special Purpose Machines",               slug: "spm" },
+  { icon: Shield, label: "Tyre Industries",                        slug: "tyre" },
+  { icon: Wrench, label: "Material Handling Equipment",            slug: "material-handling" },
 ];
 
 // ── Nav links ─────────────────────────────────────────────────────────

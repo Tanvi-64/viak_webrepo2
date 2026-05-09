@@ -2,44 +2,59 @@ import { motion } from "framer-motion";
 import { Target, Eye, Lightbulb, Award } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import PageHero from "@/components/PageHero";
+import about3 from "@/assets/about3.jpg";
+import about4 from "@/assets/about4.jpg";
 
 const timeline = [
-  { year: "2010", title: "Company Founded", desc: "Viak Automation Studio was established in Pune with a vision to transform industrial automation." },
-  { year: "2013", title: "First SPM Delivered", desc: "Successfully delivered our first Special Purpose Machine to a leading automotive client." },
-  { year: "2016", title: "Expanded Facility", desc: "Moved to a 25,000 sq ft facility to meet growing demand for precision engineering." },
-  { year: "2019", title: "Robotic Integration", desc: "Launched robotic cell integration services, expanding our automation portfolio." },
-  { year: "2022", title: "50+ Clients Milestone", desc: "Crossed 50 satisfied clients across automotive and tire manufacturing sectors." },
-  { year: "2024", title: "Global Benchmarks", desc: "Achieved international quality certifications and began exports to global markets." },
-];
-
-const directors = [
   {
-    name: "Director Name",
-    role: "Managing Director",
-    photo: "/director1.jpeg",
-    desc: "Visionary leader with 20+ years in industrial automation and precision engineering.",
+    year: "2016",
+    title: "Company Founded",
+    desc: "Viak Automation Studio was established in Pune with a vision to deliver precision-engineered automation solutions for manufacturing industries."
   },
   {
-    name: "Director Name",
-    role: "Technical Director",
-    photo: "/director2.jpeg",
-    desc: "Expert in SPM design and robotic systems with a passion for innovation.",
+    year: "2017",
+    title: "First Hydraulic & SPM Projects Delivered",
+    desc: "Successfully designed and commissioned initial hydraulic presses and special purpose machines for local manufacturing clients."
   },
+  {
+    year: "2018",
+    title: "Entry into Tyre Industry Solutions",
+    desc: "Started developing dedicated equipment such as dipping stations, gum folding units, and handling trolleys for tyre industry processes."
+  },
+  {
+    year: "2019",
+    title: "Expansion into Material Handling Systems",
+    desc: "Introduced conveyors, roller systems, lifts, and custom trolleys to provide complete material handling solutions across shop floors."
+  },
+  {
+    year: "2020",
+    title: "Advanced Pneumatic & Servo Systems",
+    desc: "Integrated pneumatic controls and servo-driven mechanisms into machines for improved precision, speed, and automation control."
+  },
+  {
+    year: "2022",
+    title: "Trusted Vendor for Multiple Industries",
+    desc: "Became a preferred automation partner for clients in tyre, automotive, and general engineering sectors with repeat project deliveries."
+  },
+  {
+    year: "2024",
+    title: "Complete In-House Design & Fabrication Capability",
+    desc: "Strengthened in-house design, fabrication, and assembly capabilities to deliver end-to-end automation systems under one roof."
+  }
 ];
 
 const staff = [
-  { photo: "/team1.jpg" },
-  { photo: "/team2.jpg" },
-  { photo: "/team3.jpg" },
+  { photo: about3 },
+  { photo: about4 },
 ];
 
 const coreValues = [
-  { title: "Precision", desc: "Sub-millimeter accuracy in every component we manufacture." },
-  { title: "Innovation", desc: "Continuously adopting cutting-edge technologies." },
-  { title: "Integrity", desc: "Transparent, honest relationships with every client." },
-  { title: "Excellence", desc: "Uncompromising quality at every stage of delivery." },
-  { title: "Collaboration", desc: "Working closely with clients to solve real problems." },
-  { title: "Sustainability", desc: "Engineering solutions that support long-term growth." },
+  { title: "Innovation First", desc: "We continuously develop smarter, faster, and more efficient automation solutions." },
+  { title: "Customer-Centric Approach", desc: "Every machine is designed around the customer’s process and ROI." },
+  { title: "Quality & Precision", desc: "We deliver machines that ensure accuracy, durability, and zero-defect output." },
+  { title: "Integrity & Transparency", desc: "We build trust through honest communication and ethical practices." },
+  { title: "Teamwork & Collaboration", desc: "Strong internal and client collaboration drives better solutions." },
+  { title: "Ownership & Accountability", desc: "We take complete responsibility—from concept to commissioning." },
 ];
 
 function CoreValuesSlider() {
@@ -77,7 +92,7 @@ const About = () => (
     />
 
     {/* Mission & Vision */}
-    <section className="section-padding bg-slate-50 overflow-hidden">
+    <section className="section-padding bg-white overflow-hidden">
       <div className="container mx-auto flex flex-col gap-20">
 
         {/* MISSION — image left, dark card overlaps from right */}
@@ -118,7 +133,8 @@ const About = () => (
                 </div>
               </div>
               <p className="text-white/70 text-sm leading-relaxed mb-8 max-w-md">
-                To empower industries with intelligent automation solutions — delivering precision-engineered jigs, fixtures, SPMs and robotic cells that enhance productivity, reduce costs and drive sustainable growth.
+             To design and deliver high-performance automation systems and special purpose machines
+that reduce manual effort, enhance productivity, and maximize ROI for our clients.
               </p>
               <div className="grid grid-cols-2 gap-5">
                 {[
@@ -175,7 +191,8 @@ const About = () => (
                 </div>
               </div>
               <p className="text-white/70 text-sm leading-relaxed mb-8 max-w-md">
-                To be India's most trusted special purpose machine manufacturer — setting global benchmarks in engineering excellence, customer satisfaction and technology-driven automation solutions.
+               To become a leading force in smart industrial automation, delivering innovative, reliable, and
+scalable solutions that redefine manufacturing efficiency across industries.
               </p>
               <div className="grid grid-cols-2 gap-5">
                 {[
@@ -218,7 +235,7 @@ const About = () => (
     </section>
 
     {/* Timeline */}
-    <section className="section-padding bg-muted/50">
+    <section className="section-padding bg-slate-50">
       <div className="container mx-auto">
         <ScrollReveal className="text-center mb-16">
           <span className="text-accent font-semibold text-sm tracking-wider uppercase">Our Journey</span>
@@ -257,41 +274,16 @@ const About = () => (
           <div className="w-16 h-1 gradient-bg mx-auto mt-4 rounded-full" />
         </ScrollReveal>
 
-        {/* Row 1 — 2 Directors centred, larger with overlay */}
-        <div className="flex justify-center gap-8 mb-8">
-          {directors.map((m, i) => (
-            <ScrollReveal key={m.name} delay={i * 0.12}>
-              <motion.div
-                className="group relative rounded-2xl overflow-hidden shadow-xl cursor-pointer"
-                style={{ width: 280, height: 360 }}
-                whileHover={{ y: -8, boxShadow: "0 28px 56px rgba(30,58,138,0.25)" }}
-                transition={{ type: "spring", stiffness: 260, damping: 20 }}
-              >
-                <img src={m.photo} alt={m.name}
-                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#1e3a8a]/90 via-[#1e3a8a]/50 to-transparent px-5 py-4 group-hover:translate-y-full transition-transform duration-[400ms]">
-                  <p className="font-display font-bold text-white text-base">{m.name}</p>
-                  <p className="text-[#38bdf8] text-xs font-semibold mt-0.5 tracking-wide">{m.role}</p>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-[400ms] flex flex-col justify-end px-5 py-5">
-                  <p className="font-display font-bold text-white text-base mb-1">{m.name}</p>
-                  <p className="text-[#38bdf8] text-xs font-semibold tracking-wide mb-3">{m.role}</p>
-                  <p className="text-white/75 text-xs leading-relaxed">{m.desc}</p>
-                </div>
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#38bdf8] to-[#1e3a8a] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </motion.div>
-            </ScrollReveal>
-          ))}
-        </div>
+    
 
-        {/* Row 2 — 3 staff photos, smaller */}
-        <div className="flex justify-center gap-6">
+        {/* Staff photos */}
+        <div className="flex justify-center gap-8">
           {staff.map((m, i) => (
             <ScrollReveal key={i} delay={i * 0.1}>
               <motion.div
-                className="relative rounded-2xl overflow-hidden shadow-md cursor-pointer"
-                style={{ width: 210, height: 240 }}
-                whileHover={{ y: -5, scale: 1.04, boxShadow: "0 20px 40px rgba(30,58,138,0.18)" }}
+                className="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer"
+                style={{ width: 420, height: 340 }}
+                whileHover={{ y: -5, scale: 1.03, boxShadow: "0 24px 48px rgba(30,58,138,0.22)" }}
                 transition={{ type: "spring", stiffness: 260, damping: 20 }}
               >
                 <img src={m.photo} alt={`Team member ${i + 1}`}
@@ -304,7 +296,7 @@ const About = () => (
     </section>
 
     {/* Infrastructure */}
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-slate-50">
       <div className="container mx-auto">
         <ScrollReveal className="text-center mb-12">
           <span className="text-accent font-semibold text-sm tracking-[0.25em] uppercase">To Facilitate Our Quality</span>
@@ -315,7 +307,7 @@ const About = () => (
           </p>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"> 
           <ScrollReveal direction="left">
             <motion.div className="relative rounded-2xl overflow-hidden shadow-2xl group"
               whileHover={{ scale: 1.02 }} transition={{ type: "spring", stiffness: 200, damping: 20 }}>
@@ -327,7 +319,7 @@ const About = () => (
                 transition={{ delay: 0.4 }}
                 className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2 flex items-center gap-2 shadow-lg">
                 <div className="w-2 h-2 rounded-full bg-[#38bdf8] animate-pulse" />
-                <span className="text-[#1e3a8a] font-bold text-xs tracking-wide uppercase">Viak India — Pune</span>
+                <span className="text-[#1e3a8a] font-bold text-xs tracking-wide uppercase">Viak Automation — Pune</span>
               </motion.div>
             </motion.div>
           </ScrollReveal>
@@ -372,7 +364,7 @@ const About = () => (
     </section>
 
     {/* Core Values */}
-    <section className="py-20 bg-[#eef4fb] overflow-hidden">
+    <section className="py-20 bg-white overflow-hidden">
       <div className="container mx-auto px-4 mb-12">
         <ScrollReveal className="text-center">
           <span className="text-[#38bdf8] font-semibold text-sm tracking-[0.25em] uppercase">What Drives Us</span>

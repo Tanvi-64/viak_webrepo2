@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Wrench, Truck, Cpu, Layers, CircleDot, Cog, Bot, Shield, Zap, ArrowRight } from "lucide-react";
+import { Wrench,Gauge, Truck, Cpu, Layers, CircleDot, Cog, Bot, Shield, Zap, ArrowRight } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import PageHero from "@/components/PageHero";
+import projectViak from "@/assets/project_viak.jpg";
 
 // ── Services data ─────────────────────────────────────────────────────
 const services = [
@@ -33,19 +34,40 @@ const services = [
   {
     icon: CircleDot, color: "#1e3a8a",
     title: "Tire Industries Solutions",
-    desc: "Specialized solutions and machinery designed for tire manufacturing and related industries.",
+    desc: "Specialized solutions and machinery designed for tyre industry processes and related applications.",
     tags: ["Tire Handling Systems", "Automation in Tire Production"],
   },
 ];
 
 // ── Products data ─────────────────────────────────────────────────────
 const products = [
-  { icon: Cog,    title: "Jigs & Fixtures",                     slug: "jigs-fixtures",        desc: "Bush locating, clamp assembly, inspection, gear cutting and leak testing fixtures." },
-  { icon: Cpu,    title: "Special Purpose Machines",            slug: "spm",                  desc: "Hydraulic SPMs, welding SPMs, assembly automation and rotary welding machines." },
-  { icon: Bot,    title: "Pick and Place Units",                slug: "pick-place",           desc: "Gantry, vacuum and robotic pick & place systems with servo and pneumatic control." },
-  { icon: Wrench, title: "Tire Industry Equipment",             slug: "tire-industry",        desc: "Rubber sheet edge gum folding, conveyors, press rolls, comb rolls and guide plates." },
-  { icon: Shield, title: "Industrial Washing Machine Parts",    slug: "washing-machine-parts",desc: "Rotation frames, sliding doors, work tanks, gantry dipping stations and pallets." },
-  { icon: Zap,    title: "Conveying Systems",                   slug: "robotics-automation",  desc: "Arc welding, spot welding, gluing robotic cells and complete robotic lines." },
+
+ {
+    icon: Gauge,
+    title: "Hydraulics, Pneumatics & Servo Presses",
+    slug: "hydraulics",
+    desc: "Design and manufacturing of hydraulic, pneumatic, and servo presses for precision forming, pressing, clamping, and automated industrial operations."
+  },
+  {
+    icon: Cpu,
+    title: "Special Purpose Machines (SPM)",
+    slug: "spm",
+    desc: "Custom-built special purpose machines tailored for specific production needs such as welding, drilling, assembly, tapping, and multi-station automation."
+  },
+
+  {
+    icon: Shield,
+    title: "Tyre Industries",
+    slug: "tyre",
+    desc: "Dedicated machinery and fabricated equipment for tyre manufacturing processes including dipping stations, rotation frames, work tanks, sliding doors, and pallets."
+  },
+  {
+    icon: Wrench,
+    title: "Material Handling Equipment",
+    slug: "material-handling",
+    desc: "Engineered material handling solutions such as conveyors, rollers, guide plates, gum folding units, and press rolls for smooth workflow across industrial setups."
+  }
+  
 ];
 
 const Products = () => (
@@ -55,7 +77,7 @@ const Products = () => (
       title="Our"
       highlight="Products & Services"
       desc="Explore our complete range of precision-engineered products and industrial services tailored for automotive, tire and process industries."
-      image="/service_viak.jpg"
+      image={projectViak}
     />
 
     {/* ── SERVICES WE PROVIDE ── */}

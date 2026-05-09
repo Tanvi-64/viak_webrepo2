@@ -5,68 +5,87 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
   ArrowRight, Cog, Cpu, Wrench, Bot, Shield,
   Play, CheckCircle2, Zap, Award, Users, TrendingUp,
   Factory, Car, Plane, Settings, Building2, Layers,
-  Activity, Workflow,
+  Activity, Workflow,Gauge,
 } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import Testimonials from "@/components/Testimonials";
 import heroBg from "@/assets/hero-bg.jpg";
-import tyreHero from "@/assets/tyre1.jpg";
+import mheHero from "@/assets/MHE/mhe1.jpeg";
 import washingHero from "@/assets/tyre2.jpg";
 // ── DATA ──────────────────────────────────────────────────────────────
 
 const heroSlides = [
   {
     image: heroBg,
-    tag: "Jigs • Fixtures • SPM",
-    title: "Manufacturers of",
+    tag: "SPM • Press Machines • Automation",
+    title: "Precision Engineering for",
     highlight: "Special Purpose Machines",
-    desc: "Experts in Jigs & Fixtures, Pick and Place Units, Robotic Cells and Industrial Washing Machine Components.",
+    desc: "Custom-built SPMs, hydraulic & servo presses, pick and place units, and robotic cells engineered for your production line.",
   },
   {
-    image: tyreHero,
-    tag: "Tire Industry Tooling",
-    title: "Precision Tooling for",
-    highlight: "Tire Manufacturing",
-    desc: "Rubber sheet pick & place, edge gum folding, conveyors, press rolls and inspection systems.",
+    image: mheHero,
+    tag: "Material Handling Equipment",
+    title: "Engineered Solutions for",
+    highlight: "Material Handling",
+    desc: "Conveyors, trolleys, roller systems, pallet systems and custom carts designed to streamline workflow across your shop floor.",
   },
   {
     image: washingHero,
-    tag: "Industrial Washing Machines",
-    title: "Critical Components for",
-    highlight: "Industrial Washing Systems",
-    desc: "Rotation Frames, Sliding Doors, Work Tanks, Gantry Dipping Stations with <1mm runout accuracy.",
+    tag: "Tyre Industry Solutions",
+    title: "Dedicated Machinery for",
+    highlight: "Tyre Industry Processes",
+    desc: "Dipping stations, rotation frames, work tanks, sliding doors and gum folding units built for tyre manufacturing operations.",
   },
 ];
 
 const services = [
-  { icon: Cog,    title: "Jigs & Fixtures",                  slug: "jigs-fixtures",        desc: "Bush locating, clamp assembly, inspection, gear cutting, profile checking and leak testing fixtures." },
-  { icon: Cpu,    title: "Special Purpose Machines (SPM)",   slug: "spm",                  desc: "Hydraulic SPMs, welding SPMs, assembly automation and rotary welding machines." },
-  { icon: Bot,    title: "Pick and Place Units",             slug: "pick-place",           desc: "Gantry type, vacuum type and robotic pick & place systems with servo and pneumatic control." },
-  { icon: Shield, title: "Industrial Washing Machine Parts", slug: "washing-machine-parts",desc: "Rotation frames, sliding doors, work tanks, gantry dipping stations and pallets." },
-  { icon: Wrench, title: "Tire Industry Equipment",          slug: "tire-industry",        desc: "Rubber sheet edge gum folding, conveyors, press rolls, comb rolls and guide plates." },
-  { icon: Zap,    title: "Robotics & Automation Cells",      slug: "robotics-automation",  desc: "Arc welding, spot welding, gluing robotic cells and complete robotic lines." },
+  {
+    icon: Gauge,
+    title: "Hydraulics, Pneumatics & Servo Presses",
+    slug: "hydraulics",
+    desc: "Design and manufacturing of hydraulic, pneumatic, and servo presses for precision forming, pressing, clamping, and automated industrial operations."
+  },
+  {
+    icon: Cpu,
+    title: "Special Purpose Machines (SPM)",
+    slug: "spm",
+    desc: "Custom-built special purpose machines tailored for specific production needs such as welding, drilling, assembly, tapping, and multi-station automation."
+  },
+
+  {
+    icon: Shield,
+    title: "Tyre Industries",
+    slug: "tyre",
+    desc: "Dedicated machinery and fabricated equipment for tyre manufacturing processes including dipping stations, rotation frames, work tanks, sliding doors, and pallets."
+  },
+  {
+    icon: Wrench,
+    title: "Material Handling Equipment",
+    slug: "material-handling",
+    desc: "Engineered material handling solutions such as conveyors, rollers, guide plates, gum folding units, and press rolls for smooth workflow across industrial setups."
+  }
 ];
 
 const stats = [
-  { value: 50, suffix: "+", label: "Fixtures Designed", icon: TrendingUp },
-  { value: 30, suffix: "+", label: "SPM Machines Delivered", icon: Users },
-  { value: 20, suffix: "+", label: "Tire Industry Clients", icon: Award },
-  { value: 10, suffix: "+", label: "Washing Machine Systems", icon: CheckCircle2 },
+  { value: 50, suffix: "+", label: "SPM Machines Delivered", icon: TrendingUp },
+  { value: 30, suffix: "+", label: "Press Machines Built", icon: Users },
+  { value: 20, suffix: "+", label: "Tyre Industry Clients", icon: Award },
+  { value: 10, suffix: "+", label: "MHE Systems Installed", icon: CheckCircle2 },
 ];
 
 const industries = [
-  { icon: Factory, title: "Tire Industry", desc: "Tooling, conveyors, press rolls and pick & place systems for major tire manufacturers." },
-  { icon: Car, title: "Automotive Industry", desc: "Jigs, fixtures, SPMs and robotic cells for automotive assembly and welding lines." },
-  { icon: Plane, title: "Aerospace Components", desc: "High-precision fixtures and inspection gauges for aerospace-grade components." },
-  { icon: Settings, title: "Process Industries", desc: "Custom automation and washing systems for process and chemical industries." },
+  { icon: Factory, title: "Tyre Industry", desc: "Dipping stations, rotation frames, gum folding units and handling trolleys for major tyre manufacturers." },
+  { icon: Car, title: "Automotive Industry", desc: "SPMs, robotic cells and press machines for automotive assembly and welding lines." },
+  { icon: Plane, title: "Aerospace Components", desc: "High-precision special purpose machines and inspection systems for aerospace-grade components." },
+  { icon: Settings, title: "Process Industries", desc: "Custom automation and material handling systems for process and chemical industries." },
   { icon: Building2, title: "Manufacturing Plants", desc: "End-to-end SPM and automation solutions for general manufacturing facilities." },
-  { icon: Layers, title: "Heavy Engineering", desc: "Robust fixtures and SPMs for heavy fabrication and structural engineering." },
+  { icon: Layers, title: "Heavy Engineering", desc: "Robust press machines and SPMs for heavy fabrication and structural engineering." },
 ];
 
 const expertise = [
-  { icon: Settings, title: "Precision Fixture Design", desc: "High accuracy bush locating, clamp, inspection, gear cutting and leak testing fixture design with micron level precision." },
+  { icon: Settings, title: "Precision Machine Design", desc: "High accuracy SPM design for welding, drilling, assembly, tapping and multi-station automation with micron level precision." },
   { icon: Cpu, title: "Custom Machine Design", desc: "Design and development of special purpose machines tailored to client production requirements." },
   { icon: Activity, title: "Servo, Pneumatic & Hydraulic Systems", desc: "Integration of servo motors, pneumatic actuators and hydraulic power systems for controlled motion." },
   { icon: Bot, title: "Robotic Integration", desc: "Arc welding, spot welding, gluing and robotic material handling cell integration." },
@@ -333,7 +352,7 @@ const Index = () => {
           transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
         >
           {Array.from({ length: 2 }).map((_, rep) =>
-            ["Jigs & Fixtures", "Special Purpose Machines", "Pick & Place Units", "Robotic Cells", "Tire Industry Tooling", "Industrial Washing Parts"].map((item) => (
+            ["SPM Machines", "Hydraulic & Servo Presses", "Pick & Place Units", "Robotic Cells", "Material Handling Equipment", "Tyre Industry Solutions"].map((item) => (
               <span key={`${rep}-${item}`} className="text-white/50 text-sm font-medium flex items-center gap-3">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block" />
                 {item}
@@ -471,7 +490,7 @@ const Index = () => {
     
 
       {/* ── CLIENTS ── */}
-      <section className="py-16 bg-slate-50 overflow-hidden">
+      <section className="py-16 bg-white overflow-hidden">
         <div className="container mx-auto px-4">
           <ScrollReveal className="text-center mb-12">
             <span className="text-accent font-semibold text-sm tracking-wider uppercase">Trusted By</span>
@@ -486,9 +505,9 @@ const Index = () => {
         <div className="relative">
           {/* Fade edges */}
           <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-            style={{ background: "linear-gradient(to right, #f0f5ff, transparent)" }} />
+            style={{ background: "linear-gradient(to right, #ffffff, transparent)" }} />
           <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-            style={{ background: "linear-gradient(to left, #f0f5ff, transparent)" }} />
+            style={{ background: "linear-gradient(to left, #ffffff, transparent)" }} />
 
           <motion.div
             className="flex items-center gap-16"
@@ -535,7 +554,7 @@ const Index = () => {
         <div className="container mx-auto text-center relative z-10">
           <ScrollReveal>
             <h2 className="font-display text-3xl md:text-5xl font-bold mb-4">
-              Looking for Custom SPM, Fixtures or Pick & Place Solutions?
+              Looking for Custom SPM, Press Machines or Material Handling Solutions?
             </h2>
             <p className="text-white/80 max-w-xl mx-auto mb-8 text-lg">
               Tell us your requirement and our engineering team will design the right solution for your production line.

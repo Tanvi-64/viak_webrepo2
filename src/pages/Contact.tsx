@@ -7,6 +7,7 @@ import AnimatedGradientBg from "@/components/AnimatedGradientBg";
 import FloatingGears from "@/components/FloatingGears";
 import { toast } from "sonner";
 import PageHero from "@/components/PageHero";
+import contactsHeader from "@/assets/contactusbg.jpg";
 import emailjs from "@emailjs/browser";
 
 const Contact = () => {
@@ -54,7 +55,7 @@ const Contact = () => {
         title="Contact"
         highlight="Us"
         desc="Have a project in mind? Our engineering team is ready to help you find the right automation solution."
-        image="/contact_viak.jpg"
+        image={contactsHeader}
       />
 
       <section className="section-padding bg-background">

@@ -232,41 +232,85 @@ const ProductDetail = () => {
       {/* ── LIGHTBOX ── */}
       <AnimatePresence>
         {lightbox !== null && (
-          <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-black/92 backdrop-blur-sm flex items-center justify-center p-4"
-            onClick={() => setLightbox(null)}
-          >
+          <>
+            {/* Backdrop — blur only, no dark tint */}
             <motion.div
-              initial={{ scale: 0.85, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.85, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 260, damping: 22 }}
-              className="relative max-w-4xl w-full"
-              onClick={(e) => e.stopPropagation()}
+              key="backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 z-[99] backdrop-blur-md bg-white/10"
+              onClick={() => setLightbox(null)}
+            />
+
+            {/* Content */}
+            <motion.div
+              key="lightbox"
+              initial={{ opacity: 0, scale: 0.75, y: 40 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.75, y: 40 }}
+              transition={{ type: "spring", stiffness: 220, damping: 22 }}
+              className="fixed inset-0 z-[100] flex items-center justify-center p-6 pointer-events-none"
             >
-              <img src={gallery[lightbox].src} alt={gallery[lightbox].name}
-                className="w-full max-h-[78vh] object-contain rounded-2xl shadow-2xl" />
-              <div className="mt-4 text-center">
-                <p className="text-white font-display font-bold text-xl">{gallery[lightbox].name}</p>
-                <p className="text-white/50 text-sm mt-1">{lightbox + 1} / {gallery.length}</p>
+              <div className="relative max-w-4xl w-full pointer-events-auto">
+                {/* Image */}
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                  <img
+                    src={gallery[lightbox].src}
+                    alt={gallery[lightbox].name}
+                    className="w-full max-h-[75vh] object-contain"
+                  />
+                </div>
+
+                {/* Caption */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="mt-4 text-center"
+                >
+                  <p className="text-foreground font-display font-bold text-lg">{gallery[lightbox].name}</p>
+                  <p className="text-muted-foreground text-xs mt-1 tracking-widest">{lightbox + 1} / {gallery.length}</p>
+                </motion.div>
+
+                {/* Close button */}
+                <motion.button
+                  onClick={() => setLightbox(null)}
+                  className="absolute -top-4 -right-4 w-10 h-10 rounded-full bg-gray-600 hover:bg-red-500 border border-gray-400 flex items-center justify-center text-white transition-colors duration-200 shadow-lg"
+                  whileHover={{ scale: 1.15, rotate: 90 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <X size={17} />
+                </motion.button>
+
+                {/* Prev */}
+                {lightbox > 0 && (
+                  <motion.button
+                    onClick={() => setLightbox(lightbox - 1)}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-gray-600 hover:bg-gray-500 border border-gray-400 flex items-center justify-center text-white transition-colors duration-200 shadow-md"
+                    whileHover={{ scale: 1.1, x: -2 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <ArrowLeft size={20} />
+                  </motion.button>
+                )}
+
+                {/* Next */}
+                {lightbox < gallery.length - 1 && (
+                  <motion.button
+                    onClick={() => setLightbox(lightbox + 1)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-gray-600 hover:bg-gray-500 border border-gray-400 flex items-center justify-center text-white transition-colors duration-200 shadow-md"
+                    whileHover={{ scale: 1.1, x: 2 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <ArrowRight size={20} />
+                  </motion.button>
+                )}
               </div>
-              <button onClick={() => setLightbox(null)}
-                className="absolute -top-4 -right-4 w-10 h-10 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-white transition-colors">
-                <X size={18} />
-              </button>
-              {lightbox > 0 && (
-                <button onClick={() => setLightbox(lightbox - 1)}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-white transition-colors">
-                  <ArrowLeft size={20} />
-                </button>
-              )}
-              {lightbox < gallery.length - 1 && (
-                <button onClick={() => setLightbox(lightbox + 1)}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-white transition-colors">
-                  <ArrowRight size={20} />
-                </button>
-              )}
             </motion.div>
-          </motion.div>
+          </>
         )}
       </AnimatePresence>
     </div>

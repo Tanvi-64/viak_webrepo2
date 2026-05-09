@@ -37,7 +37,7 @@ const services = [
     icon: CircleDot,
     color: "#1e3a8a",
     title: "Tire Industries Solutions",
-    desc: "Specialized solutions and machinery designed for tire manufacturing and related industries.",
+    desc: "Specialized solutions and machinery designed for tyre industry processes and related applications.",
     tags: ["Tire Handling Systems", "Automation in Tire Production"],
   },
 ];
@@ -48,7 +48,7 @@ const Services = () => (
       label="What We Offer"
       title="Our"
       highlight="Services"
-      desc="End-to-end automation and engineering solutions — jigs, fixtures, SPMs, robotics and washing systems tailored for modern industry."
+      desc="End-to-end automation and engineering solutions — SPMs, press machines, material handling equipment, robotics and tyre industry systems tailored for modern industry."
       image="/service_viak.jpg"
     />
 

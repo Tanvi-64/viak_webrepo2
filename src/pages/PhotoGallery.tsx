@@ -1,4 +1,5 @@
 import PageHero from "@/components/PageHero";
+import photoGalleryHeader from "@/assets/teambgimg.jpg";
 import ScrollReveal from "@/components/ScrollReveal";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
@@ -16,7 +17,8 @@ const PhotoGallery = () => {
         title="Photo"
         highlight="Gallery"
         desc="Browse our complete gallery of precision-engineered machines, components and systems."
-        image="/project_viak.jpg"
+        image={photoGalleryHeader}
+        descClassName="text-black font-medium mt-2 text-sm leading-relaxed"
       />
 
       <section className="section-padding bg-white">

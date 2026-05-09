@@ -27,7 +27,7 @@ const Projects = () => {
         label="Portfolio"
         title="Our"
         highlight="Projects"
-        desc="A showcase of precision-engineered SPMs, jigs, fixtures and automation systems delivered across India's leading manufacturers."
+        desc="A showcase of precision-engineered SPMs, press machines, material handling systems and automation solutions delivered across India's leading manufacturers."
         image="/project_viak.jpg"
       />
 
