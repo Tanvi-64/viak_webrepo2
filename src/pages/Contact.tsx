@@ -88,7 +88,7 @@ const Contact = () => {
           </ScrollReveal>
 
           {/* ── Bottom: Map + Form ── */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
 
             {/* Map */}
             <ScrollReveal direction="left">
@@ -104,7 +104,7 @@ const Contact = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
                   className="relative rounded-2xl overflow-hidden shadow-xl border border-border"
-                  style={{ height: 400 }}
+                  style={{ height: "clamp(240px, 40vw, 400px)" }}
                 >
                   {/* Decorative top bar */}
                   <div className="absolute top-0 left-0 right-0 h-1 gradient-bg z-10" />

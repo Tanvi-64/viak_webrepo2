@@ -36,7 +36,7 @@ const ProductDetail = () => {
     <div className="min-h-screen bg-white pb-24">
 
       {/* ── PAGE HEADER ── */}
-      <div className="bg-slate-50 pt-36 pb-14 border-b border-slate-100">
+      <div className="bg-slate-50 pt-24 sm:pt-32 md:pt-36 pb-10 sm:pb-14 border-b border-slate-100">
         <div className="container mx-auto px-4 max-w-6xl">
           {/* Back */}
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }} className="mb-10">
@@ -63,7 +63,7 @@ const ProductDetail = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25, duration: 0.7 }}
-              className="font-display text-4xl md:text-6xl font-extrabold text-[#1e3a8a] leading-tight mb-4"
+              className="font-display text-3xl sm:text-4xl md:text-6xl font-extrabold text-[#1e3a8a] leading-tight mb-4"
             >
               {product.title.includes("(") ? (
                 <>

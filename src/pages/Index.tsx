@@ -254,7 +254,7 @@ const Index = () => {
         </div>
 
         <motion.div
-          className="relative z-10 container mx-auto px-4 pt-48 pb-20"
+          className="relative z-10 container mx-auto px-4 pt-32 sm:pt-40 md:pt-48 pb-16 sm:pb-20"
           style={{ opacity: heroOpacity }}
         >
           <div className="max-w-3xl">
@@ -362,10 +362,9 @@ const Index = () => {
         </motion.div>
       </div>
 
-      {/* ── STATS ── */}
       <section className="section-padding bg-white">
         <div className="container mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             {stats.map((s, i) => (
               <ScrollReveal key={s.label} delay={i * 0.1}>
                 <motion.div className="glass-card p-6 text-center group hover-lift" whileHover={{ scale: 1.03 }}>
@@ -510,7 +509,7 @@ const Index = () => {
             style={{ background: "linear-gradient(to left, #ffffff, transparent)" }} />
 
           <motion.div
-            className="flex items-center gap-16"
+            className="flex items-center gap-8 sm:gap-16"
             animate={{ x: ["0%", "-50%"] }}
             transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
             style={{ width: "max-content" }}
@@ -523,8 +522,8 @@ const Index = () => {
                 whileHover={{ scale: 1.38, filter: "brightness(1.1)" }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <div className="bg-white rounded-xl shadow-md px-10 py-6 flex items-center justify-center"
-                  style={{ minWidth: 220, height: 120 }}>
+                <div className="bg-white rounded-xl shadow-md px-6 sm:px-10 py-4 sm:py-6 flex items-center justify-center"
+                  style={{ minWidth: 160, height: 100 }}>
                   <img
                     src={logo}
                     alt={`Client ${(i % clients.length) + 1}`}
@@ -553,10 +552,10 @@ const Index = () => {
         />
         <div className="container mx-auto text-center relative z-10">
           <ScrollReveal>
-            <h2 className="font-display text-3xl md:text-5xl font-bold mb-4">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-5xl font-bold mb-4">
               Looking for Custom SPM, Press Machines or Material Handling Solutions?
             </h2>
-            <p className="text-white/80 max-w-xl mx-auto mb-8 text-lg">
+            <p className="text-white/80 max-w-xl mx-auto mb-8 text-base sm:text-lg">
               Tell us your requirement and our engineering team will design the right solution for your production line.
             </p>
             <Link

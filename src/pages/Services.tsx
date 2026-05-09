@@ -65,7 +65,7 @@ const Services = () => (
           {services.map((s, i) => (
             <ScrollReveal key={s.title} delay={i * 0.08}>
               <motion.div
-                className="bg-white rounded-2xl shadow-md border border-gray-100 flex flex-col md:flex-row items-start gap-0 overflow-hidden group"
+                className="bg-white rounded-2xl shadow-md border border-gray-100 flex flex-col md:flex-row items-start gap-0 overflow-hidden group relative"
                 whileHover={{ y: -4, boxShadow: "0 20px 48px rgba(30,58,138,0.13)" }}
                 transition={{ type: "spring", stiffness: 260, damping: 20 }}
               >
