@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
+import SocialFloat from "@/components/SocialFloat";
 import Footer from "@/components/Footer";
 import PageLoader from "@/components/PageLoader";
 import Index from "./pages/Index";
@@ -44,6 +45,7 @@ const AppRoutes = () => {
     <>
       <ScrollToTop />
       <Navbar />
+      <SocialFloat />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<PageWrapper><Index /></PageWrapper>} />

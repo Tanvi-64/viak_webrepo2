@@ -4,18 +4,14 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, X, Maximize2, Volume2 } from "lucide-react";
 
-import machine1 from "@/assets/machinevideos/machine1.mp4";
-import machine2 from "@/assets/machinevideos/machine2.mp4";
-import machine3 from "@/assets/machinevideos/machine3.mp4";
-import machine4 from "@/assets/machinevideos/machine4.mp4";
-import machine5 from "@/assets/machinevideos/machine5.mp4";
+
 
 const videos = [
-  { title: "Auto Proof Load Machine With Oil Spraying", tag: "SPM", src: machine1 },
-  { title: "100 Ton Press Machine",                    tag: "Press", src: machine2 },
-  { title: "Wheel ST MC",                              tag: "Wheel", src: machine3 },
-  { title: "Z101",                                     tag: "Custom", src: machine4 },
-  { title: "S201 Top Mount Assembly",                  tag: "Assembly", src: machine5 },
+  { title: "Auto Proof Load Machine With Oil Spraying", tag: "SPM", src:"https://res.cloudinary.com/dwmb3fuvg/video/upload/q_auto/f_auto/v1778399053/qvsjsqa32dmqfxlqsduq.mp4" },
+  { title: "100 Ton Press Machine",                    tag: "Press", src: "https://res.cloudinary.com/dwmb3fuvg/video/upload/q_auto/f_auto/v1778399079/wpw4ojgt87gnjh08kdjx.mp4"},
+  { title: "Wheel ST MC",                              tag: "Wheel", src: "https://res.cloudinary.com/dwmb3fuvg/video/upload/q_auto/f_auto/v1778398918/xuzdnccdtk7bl1nty78n.mp4"},
+  { title: "Z101",                                     tag: "Custom", src: "https://res.cloudinary.com/dwmb3fuvg/video/upload/q_auto/f_auto/v1778398804/zrew4empqmqwm7egwq0o.mp4"},
+  { title: "S201 Top Mount Assembly",                  tag: "Assembly", src: "https://res.cloudinary.com/dwmb3fuvg/video/upload/q_auto/f_auto/v1778399055/uwapvceom6tlfdvdybhd.mp4" },
 ];
 
 type Video = typeof videos[0];

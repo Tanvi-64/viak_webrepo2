@@ -30,3 +30,5 @@ src/assets/*.mp4
 src/assets/*.mov
 src/assets/*.avi
 
+*.mp4
+

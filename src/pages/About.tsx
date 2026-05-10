@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
-import { Target, Eye, Lightbulb, Award } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Target, Eye, Lightbulb, Award, Play, Pause, Volume2, VolumeX, Maximize2, X } from "lucide-react";
+import { useRef, useState } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
 import PageHero from "@/components/PageHero";
 import about3 from "@/assets/about3.jpg";
@@ -28,6 +29,233 @@ const coreValues = [
   { title: "Teamwork & Collaboration", desc: "Strong internal and client collaboration drives better solutions." },
   { title: "Ownership & Accountability", desc: "We take complete responsibility—from concept to commissioning." },
 ];
+
+const COMPANY_VIDEO = "https://res.cloudinary.com/dwmb3fuvg/video/upload/q_auto/f_auto/v1778399880/ph4vwrpfadxgumyglxw8.mp4";
+
+const COMPANY_DESC = `VIAK AUTOMATION SYSTEMS PVT LTD IS A PUNE BASED MANUFACTURING COMPANY FOCUSED ON SPECIAL PURPOSE MACHINE WORKS AND ALL TYPES OF JIGS & FIXTURES, MATERIAL HANDLING EQUIPMENT'S FOR AUTOMOBILE INDUSTRY, FOOD AND PHARMACY INDUSTRY, INFRASTRUCTURE INDUSTRY, AND ALL OTHER MECHANICAL ELEMENTS. WE ARE PROUD TO HAVE DELIVERED CHALLENGING SOLUTIONS SUCCESSFULLY TO WHO'S WHO IN THE INDUSTRY WITH OUR STRONG MANAGEMENT TEAM OF DESIGN, QUALITY, COMMERCIAL AND PRODUCTION, HAVING EXPERIENCE OF MORE THAN 10 YEARS. WE ARE KNOWN TO SUPPLY SATISFYING PRODUCTS TO OUR CUSTOMERS, ALONG WITH PROVIDING SOLUTIONS FOR SOLVING THEIR PROBLEMS OF INTEGRAL NATURE. THIS IS THE PRINCIPLE THAT WE HAVE ALWAYS BEEN ADHERING TO. AT VASPL, WE BELIEVE IN THE IDEOLOGY OF MAKING TECHNOLOGY AS OUR FOUNDATION, HENCE ORIENTING OURSELVES ACCORDING TO THE MARKET'S NEEDS AND HOLDING IT AS OUR GOAL TO MAKE CUSTOMER SATISFIED. MOREOVER, WE TRY OUR BEST IN CREATING SUCH AN ORGANIZATIONAL ENVIRONMENT THAT IS HUMAN ORIENTED, INNOVATIVE AND TECHNOLOGY DRIVEN DELIVERING THE QUALITY SERVICES TO OUR CUSTOMERS.`;
+
+function CompanyVideoSection() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(true);
+  const [muted, setMuted] = useState(true);
+  const [lightbox, setLightbox] = useState(false);
+  const lbRef = useRef<HTMLVideoElement>(null);
+
+  const togglePlay = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.paused) { v.play(); setPlaying(true); } else { v.pause(); setPlaying(false); }
+  };
+  const toggleMute = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    setMuted(v.muted);
+  };
+  const openLightbox = () => {
+    videoRef.current?.pause();
+    setPlaying(false);
+    setLightbox(true);
+  };
+  const closeLightbox = () => {
+    lbRef.current?.pause();
+    setLightbox(false);
+  };
+
+  return (
+    <section className="section-padding bg-slate-50 overflow-hidden relative">
+      <div className="container mx-auto relative z-10">
+        <ScrollReveal className="text-center mb-10 sm:mb-14">
+          <span className="text-accent font-semibold text-sm tracking-wider uppercase">Who We Are</span>
+          <h2 className="font-display text-2xl sm:text-3xl md:text-5xl font-bold mt-2 text-foreground">
+            About <span className="gradient-text">Viak</span>
+          </h2>
+          <div className="w-16 h-1 gradient-bg mx-auto mt-4 rounded-full" />
+        </ScrollReveal>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+          {/* Modern Video Frame */}
+          <ScrollReveal direction="left">
+            <div className="relative">
+              {/* outer decorative ring */}
+              <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-primary/30 via-accent/20 to-primary/10 blur-xl" />
+              {/* frame border */}
+              <motion.div
+                className="relative rounded-2xl p-[3px] bg-gradient-to-br from-primary via-accent to-primary/60 shadow-2xl"
+                whileHover={{ scale: 1.015 }}
+                transition={{ type: "spring", stiffness: 200, damping: 22 }}
+              >
+                {/* inner frame header bar */}
+                <div className="bg-[#1e3a8a] rounded-t-[14px] px-4 py-2.5 flex items-center gap-2">
+                  <div className="flex gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-red-400" />
+                    <div className="w-3 h-3 rounded-full bg-yellow-400" />
+                    <div className="w-3 h-3 rounded-full bg-green-400" />
+                  </div>
+                  <div className="flex-1 flex justify-center">
+                    <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-0.5">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] animate-pulse" />
+                      <span className="text-white/80 text-[10px] font-semibold tracking-widest uppercase">Viak Automation Systems</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* video area */}
+                <div className="relative bg-black rounded-b-[14px] overflow-hidden group">
+                  <video
+                    ref={videoRef}
+                    src={COMPANY_VIDEO}
+                    className="w-full aspect-video object-cover"
+                    muted
+                    playsInline
+                    loop
+                    autoPlay
+                    onPlay={() => setPlaying(true)}
+                    onPause={() => setPlaying(false)}
+                  />
+
+                  {/* gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+
+                  {/* center play/pause on click */}
+                  <AnimatePresence>
+                    {!playing && (
+                      <motion.button
+                        key="center-play"
+                        initial={{ opacity: 0, scale: 0.6 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.6 }}
+                        transition={{ duration: 0.2 }}
+                        onClick={togglePlay}
+                        className="absolute inset-0 flex items-center justify-center"
+                      >
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/20 backdrop-blur-md border-2 border-white/70 flex items-center justify-center hover:bg-white/35 transition-colors shadow-xl">
+                          <Play size={30} className="text-white ml-1" fill="white" />
+                        </div>
+                      </motion.button>
+                    )}
+                  </AnimatePresence>
+
+                  {/* always-visible bottom control bar */}
+                  <div className="absolute bottom-0 left-0 right-0 px-4 py-3 flex items-center justify-between bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <button
+                      onClick={togglePlay}
+                      className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 flex items-center justify-center hover:bg-[#38bdf8]/60 transition-colors"
+                    >
+                      {playing
+                        ? <Pause size={14} className="text-white" fill="white" />
+                        : <Play size={14} className="text-white ml-0.5" fill="white" />}
+                    </button>
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={toggleMute}
+                        className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 flex items-center justify-center hover:bg-[#38bdf8]/60 transition-colors"
+                      >
+                        {muted ? <VolumeX size={14} className="text-white" /> : <Volume2 size={14} className="text-white" />}
+                      </button>
+                      <button
+                        onClick={openLightbox}
+                        className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 flex items-center justify-center hover:bg-[#38bdf8]/60 transition-colors"
+                      >
+                        <Maximize2 size={14} className="text-white" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* floating corner accent */}
+              <motion.div
+                className="absolute -bottom-4 -right-4 w-20 h-20 rounded-2xl bg-gradient-to-br from-primary to-accent opacity-20"
+                animate={{ rotate: [0, 8, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.div
+                className="absolute -top-4 -left-4 w-14 h-14 rounded-xl bg-gradient-to-br from-accent to-primary opacity-15"
+                animate={{ rotate: [0, -8, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              />
+            </div>
+          </ScrollReveal>
+
+          {/* Description */}
+          <ScrollReveal direction="right">
+            <div className="flex flex-col gap-6">
+              <div className="flex items-start gap-3">
+                <div className="w-1 h-full min-h-[60px] bg-gradient-to-b from-primary to-accent rounded-full shrink-0" />
+                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed tracking-wide">
+                  {COMPANY_DESC}
+                </p>
+              </div>
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+                className="grid grid-cols-2 gap-4"
+              >
+                {[
+                  { value: "10+", label: "Years Experience" },
+                  { value: "50+", label: "Clients Served" },
+                  { value: "100+", label: "Projects Delivered" },
+                  { value: "25K", label: "Sq.Ft Facility" },
+                ].map((s) => (
+                  <motion.div
+                    key={s.label}
+                    whileHover={{ y: -4, boxShadow: "0 12px 32px rgba(30,58,138,0.15)" }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="bg-white border border-primary/10 rounded-xl px-4 py-4 text-center shadow-sm cursor-default"
+                  >
+                    <p className="gradient-text font-display font-extrabold text-2xl sm:text-3xl">{s.value}</p>
+                    <p className="text-muted-foreground text-xs mt-1 tracking-wide uppercase">{s.label}</p>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </div>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightbox && (
+          <motion.div
+            key="lightbox"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
+            onClick={closeLightbox}
+          >
+            <motion.div
+              initial={{ scale: 0.85, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.85, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 220, damping: 24 }}
+              className="relative w-full max-w-5xl rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <video
+                ref={lbRef}
+                src={COMPANY_VIDEO}
+                className="w-full aspect-video object-cover"
+                controls
+                autoPlay
+              />
+              <button
+                onClick={closeLightbox}
+                className="absolute top-3 right-3 w-9 h-9 rounded-full bg-black/60 border border-white/30 flex items-center justify-center hover:bg-black/80 transition-colors"
+              >
+                <X size={16} className="text-white" />
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
+  );
+}
 
 function CoreValuesSlider() {
   const doubled = [...coreValues, ...coreValues];
@@ -63,6 +291,8 @@ const About = () => (
       image="/about_viak.jpg"
     />
 
+    <CompanyVideoSection />
+
     {/* Mission & Vision */}
     <section className="section-padding bg-white overflow-hidden">
       <div className="container mx-auto flex flex-col gap-12 md:gap-20">
@@ -87,12 +317,9 @@ const About = () => (
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-              className="relative z-10 bg-[#1e3a8a] rounded-2xl shadow-2xl px-6 sm:px-10 py-8 sm:py-10 flex flex-col justify-center md:flex-1"
-              style={{ marginLeft: 0 }}
+              className="relative z-10 bg-[#1e3a8a] rounded-2xl shadow-2xl px-6 sm:px-10 py-8 sm:py-10 flex flex-col justify-center md:flex-1 md:-ml-20"
             >
-              {/* Desktop overlap */}
-              <style>{`@media(min-width:768px){.mission-card{margin-left:-80px}}`}</style>
-              <div className="mission-card">
+              <div>
                 <motion.div
                   className="absolute top-0 right-0 w-40 h-40 rounded-bl-full bg-[#38bdf8]/10 pointer-events-none"
                   animate={{ scale: [1, 1.15, 1], opacity: [0.5, 1, 0.5] }}
@@ -160,10 +387,9 @@ const About = () => (
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-              className="relative z-10 bg-[#1e3a8a] rounded-2xl shadow-2xl px-6 sm:px-10 py-8 sm:py-10 flex flex-col justify-center md:flex-1"
+              className="relative z-10 bg-[#1e3a8a] rounded-2xl shadow-2xl px-6 sm:px-10 py-8 sm:py-10 flex flex-col justify-center md:flex-1 md:-mr-20"
             >
-              <style>{`@media(min-width:768px){.vision-card{margin-right:-80px}}`}</style>
-              <div className="vision-card">
+              <div>
                 <motion.div
                   className="absolute top-0 left-0 w-40 h-40 rounded-br-full bg-[#38bdf8]/10 pointer-events-none"
                   animate={{ scale: [1, 1.15, 1], opacity: [0.5, 1, 0.5] }}
