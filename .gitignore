@@ -30,7 +30,3 @@ src/assets/*.mp4
 src/assets/*.mov
 src/assets/*.avi
 
-# Ignore videos
-*.mp4
-public/*.mp4
-src/assets/**/*.mp4

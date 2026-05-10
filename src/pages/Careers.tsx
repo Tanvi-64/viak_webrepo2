@@ -123,7 +123,7 @@ const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
 
       // 2) Send email with resume link
       const result = await emailjs.send(
-        "service_5s2ungh",
+        "service_qe1248a",
         "template_wdgsob4",
         {
           name: name,
