@@ -31,4 +31,7 @@ src/assets/*.mov
 src/assets/*.avi
 
 *.mp4
+*.mov
+*.avi
+src/assets/machinevideos/
 
