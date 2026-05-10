@@ -27,7 +27,7 @@ const Contact = () => {
 
   try {
     await emailjs.send(
-      "service_xpy8tci",      // your Service ID
+      "service_l3nj6s1",      // your Service ID
       "template_kr6k6c2",     // paste Template ID
       form,
       "fX4fnrb0-zYYW1he9"       // paste Public Key

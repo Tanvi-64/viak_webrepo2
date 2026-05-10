@@ -18,7 +18,7 @@ const PhotoGallery = () => {
         highlight="Gallery"
         desc="Browse our complete gallery of precision-engineered machines, components and systems."
         image={photoGalleryHeader}
-        descClassName="text-black font-medium mt-2 text-sm leading-relaxed"
+        descClassName="text-white/75 font-medium mt-2 text-xs sm:text-sm leading-relaxed hidden sm:block"
       />
 
       <section className="section-padding bg-white">

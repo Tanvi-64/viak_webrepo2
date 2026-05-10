@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import MagneticButton from "@/components/MagneticButton";
-import WaveDivider from "@/components/WaveDivider";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";import {
   ArrowRight, Cog, Cpu, Wrench, Bot, Shield,
   Play, CheckCircle2, Zap, Award, Users, TrendingUp,
@@ -451,7 +450,6 @@ const Index = () => {
             ))}
           </div>
         </div>
-        <WaveDivider className="-mt-px" />
       </section>
 
       {/* ── TESTIMONIALS ── */}
