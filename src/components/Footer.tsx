@@ -44,7 +44,7 @@ const navColumns = [
   {
     heading: "Resources",
     links: [
-      { label: "Services",       to: "/services" },
+      
       { label: "Machine Videos", to: "/resources/videos" },
       { label: "Photo Gallery",  to: "/resources/gallery" },
     ],
@@ -78,14 +78,14 @@ const Footer = () => {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <footer ref={ref} className="bg-[#0a1628] text-white relative overflow-hidden">
+    <footer ref={ref} className="bg-black text-white relative overflow-hidden">
 
       {/* subtle background glow orbs */}
       <div className="absolute -top-32 -left-32 w-72 h-72 rounded-full bg-[#1e3a8a]/20 blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-24 -right-24 w-64 h-64 rounded-full bg-[#38bdf8]/10 blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-24 -right-24 w-64 h-64 rounded-full bg-[#2fa0d1]/10 blur-3xl pointer-events-none" />
 
       {/* top accent line */}
-      <div className="h-[3px] w-full bg-gradient-to-r from-[#1e3a8a] via-[#38bdf8] to-[#1e3a8a]" />
+      <div className="h-[3px] w-full bg-gradient-to-r from-[#1e3a8a] via-[#2fa0d1] to-[#1e3a8a]" />
 
       <motion.div
         className="container mx-auto px-4 sm:px-6 pt-14 pb-10"
@@ -110,20 +110,20 @@ const Footer = () => {
               />
             </Link>
 
-            <p className="text-white/55 text-sm leading-relaxed max-w-xs">
+            <p className="text-white/55 text-base leading-relaxed max-w-xs">
               Precision-engineered automation systems — SPMs, hydraulic presses, material handling
               equipment and tyre industry solutions built for India's leading manufacturers.
             </p>
 
             {/* Contact mini-list */}
-            <ul className="flex flex-col gap-2 text-xs text-white/50">
+            <ul className="flex flex-col gap-2 text-sm text-white/50">
               {[
                 { icon: Mail,   text: "sales@viakautomation.com" },
                 { icon: Phone,  text: "+91 7406 141414" },
                 { icon: MapPin, text: "Pune, Maharashtra, India" },
               ].map(({ icon: Icon, text }) => (
                 <li key={text} className="flex items-center gap-2 group">
-                  <Icon size={12} className="text-[#38bdf8] shrink-0 group-hover:scale-110 transition-transform" />
+                  <Icon size={12} className="text-[#2fa0d1] shrink-0 group-hover:scale-110 transition-transform" />
                   <span className="group-hover:text-white/80 transition-colors">{text}</span>
                 </li>
               ))}
@@ -152,7 +152,7 @@ const Footer = () => {
           {/* Nav columns */}
           {navColumns.map((col) => (
             <motion.div key={col.heading} variants={fadeUp} transition={{ duration: 0.55, ease: "easeOut" }}>
-              <h4 className="text-white font-display font-semibold text-sm tracking-widest uppercase mb-5">
+              <h4 className="text-white font-display font-semibold text-base tracking-widest uppercase mb-5">
                 {col.heading}
               </h4>
               <ul className="flex flex-col gap-3">
@@ -160,10 +160,10 @@ const Footer = () => {
                   <li key={label}>
                     <Link
                       to={to}
-                      className="group inline-flex items-center gap-1.5 text-sm text-white/50 hover:text-white transition-colors duration-200"
+                      className="group inline-flex items-center gap-1.5 text-base text-white/50 hover:text-white transition-colors duration-200"
                     >
                       <motion.span
-                        className="inline-block w-0 h-px bg-[#38bdf8] group-hover:w-3 transition-all duration-300"
+                        className="inline-block w-0 h-px bg-[#2fa0d1] group-hover:w-3 transition-all duration-300"
                       />
                       {label}
                     </Link>
@@ -178,7 +178,7 @@ const Footer = () => {
         <motion.div
           variants={fadeUp}
           transition={{ duration: 0.55, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-xs text-white/35"
+          className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-sm text-white/35"
         >
           <span>© {new Date().getFullYear()} Viak Automation Systems Pvt. Ltd. All rights reserved.</span>
           <div className="flex items-center gap-5">

@@ -116,6 +116,8 @@ const clients = [
   "/client1.png", "/client2.png", "/client3.png", "/client4.png",
   "/client5.png", "/client6.png", "/client7.png", "/client8.png",
   "/client9.png", "/client10.png", "/client11.png", "/client12.png",
+  "/logo_1.jpeg", "/logo_2.jpeg", "/logo_3.jpeg", "/logo_4.jpeg",
+  "/logo_5.jpeg", "/logo_6.jpeg",
 ];
 
 // ── PARTICLES ─────────────────────────────────────────────────────────
@@ -287,13 +289,29 @@ const Index = () => {
                 </motion.h1>
 
                 <motion.p
-                  className="text-sm md:text-base text-white/70 max-w-xl mb-10 leading-relaxed"
+                  className="text-sm md:text-base text-white/70 max-w-xl mb-6 leading-relaxed"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
                 >
                   {slide.desc}
                 </motion.p>
+
+                {/* Company tagline */}
+                <motion.div
+                  className="flex items-center gap-3 mb-10"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.35 }}
+                >
+                  <div className="h-px w-8 bg-white/30" />
+                  <p
+                    className="text-sm md:text-base font-semibold tracking-wide bg-clip-text text-transparent"
+                    style={{ backgroundImage: "linear-gradient(90deg, #2fa0d1ff 0%, #ffffff 100%)" }}
+                  >
+                    Driven by Innovation &amp; Powered by Automation
+                  </p>
+                </motion.div>
 
                 <motion.div
                   className="flex flex-col sm:flex-row gap-4"
@@ -344,7 +362,7 @@ const Index = () => {
       </section>
 
       {/* ── MARQUEE ── */}
-      <div className="bg-navy py-3 overflow-hidden border-y border-white/10">
+      <div className="bg-black py-3 overflow-hidden border-y border-white/10">
         <motion.div
           className="flex gap-12 whitespace-nowrap"
           animate={{ x: ["0%", "-50%"] }}

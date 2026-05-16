@@ -41,7 +41,7 @@ const PhotoGallery = () => {
       />
 
       {/* Inspirational Quote Section */}
-      <section className="relative py-20 overflow-hidden bg-gradient-to-br from-[#1e3a8a] via-[#2563eb] to-[#38bdf8]">
+      <section className="relative py-20 overflow-hidden bg-gradient-to-br from-[#1e3a8a] via-[#1a357e] to-[#2fa0d1]">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-10 w-72 h-72 bg-white rounded-full blur-3xl animate-pulse" />
           <div className="absolute bottom-10 right-10 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
@@ -59,7 +59,7 @@ const PhotoGallery = () => {
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                 className="inline-block mb-6"
               >
-                <Sparkles className="text-yellow-300" size={40} />
+                <Sparkles className="text-white/80" size={40} />
               </motion.div>
               <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 "Together We Create, Innovate & Celebrate"
@@ -105,10 +105,10 @@ const PhotoGallery = () => {
                   onClick={() => setLightbox(i)}
                 >
                   {/* Decorative frame border */}
-                  <div className="absolute -inset-[3px] bg-gradient-to-br from-[#1e3a8a] via-[#2563eb] to-[#38bdf8] rounded-2xl opacity-0 group-hover:opacity-100 blur-[3px] transition-opacity duration-500" />
+                  <div className="absolute -inset-[3px] bg-gradient-to-br from-[#1e3a8a] via-[#1a357e] to-[#2fa0d1] rounded-2xl opacity-0 group-hover:opacity-100 blur-[3px] transition-opacity duration-500" />
                   
                   {/* Main card */}
-                  <div className="relative bg-white rounded-2xl shadow-lg overflow-hidden border-4 border-white group-hover:border-[#38bdf8]/30 transition-all duration-500">
+                  <div className="relative bg-white rounded-2xl shadow-lg overflow-hidden border-4 border-white group-hover:border-[#2fa0d1]/30 transition-all duration-500">
                     {/* Category badge */}
                     <div className="absolute top-3 left-3 z-20">
                       <motion.span 
@@ -146,14 +146,14 @@ const PhotoGallery = () => {
                       </div>
 
                       {/* Corner accent */}
-                      <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[#38bdf8]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-[#38bdf8]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[#2fa0d1]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-[#2fa0d1]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
 
                     {/* Title section */}
                     <div className="p-4 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-r from-[#1e3a8a]/5 to-[#38bdf8]/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                      <h3 className="font-display font-bold text-[#1e3a8a] text-base relative z-10 group-hover:text-[#38bdf8] transition-colors duration-300">
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#1e3a8a]/5 to-[#2fa0d1]/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                      <h3 className="font-display font-bold text-[#1e3a8a] text-base relative z-10 group-hover:text-[#2fa0d1] transition-colors duration-300">
                         {p.name}
                       </h3>
                       <div className="flex items-center gap-2 mt-2">
@@ -161,15 +161,15 @@ const PhotoGallery = () => {
                         <motion.div
                           animate={{ scale: [1, 1.2, 1] }}
                           transition={{ duration: 2, repeat: Infinity }}
-                          className="w-2 h-2 rounded-full bg-[#38bdf8] opacity-0 group-hover:opacity-100"
+                          className="w-2 h-2 rounded-full bg-[#2fa0d1] opacity-0 group-hover:opacity-100"
                         />
                       </div>
                     </div>
 
                     {/* Animated border effect */}
                     <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#38bdf8] to-transparent animate-shimmer" />
-                      <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#38bdf8] to-transparent animate-shimmer" style={{ animationDelay: '0.5s' }} />
+                      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#2fa0d1] to-transparent animate-shimmer" />
+                      <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#2fa0d1] to-transparent animate-shimmer" style={{ animationDelay: '0.5s' }} />
                     </div>
                   </div>
                 </motion.div>
@@ -200,10 +200,10 @@ const PhotoGallery = () => {
               className="relative max-w-5xl w-full" onClick={(e) => e.stopPropagation()}>
               
               {/* Decorative glow */}
-              <div className="absolute -inset-4 bg-gradient-to-br from-[#1e3a8a]/30 via-[#2563eb]/20 to-[#38bdf8]/30 rounded-3xl blur-2xl" />
+              <div className="absolute -inset-4 bg-gradient-to-br from-[#1e3a8a]/30 via-[#1a357e]/20 to-[#2fa0d1]/30 rounded-3xl blur-2xl" />
               
               {/* Image frame */}
-              <div className="relative bg-gradient-to-br from-[#1e3a8a] to-[#38bdf8] p-1 rounded-2xl shadow-2xl">
+              <div className="relative bg-gradient-to-br from-[#1e3a8a] to-[#2fa0d1] p-1 rounded-2xl shadow-2xl">
                 <div className="bg-black rounded-xl overflow-hidden">
                   <img src={photos[lightbox].src} alt={photos[lightbox].name}
                     className="w-full max-h-[72vh] object-contain" />
@@ -212,7 +212,7 @@ const PhotoGallery = () => {
 
               {/* Caption */}
               <div className="mt-4 text-center">
-                <span className="inline-block px-4 py-1 bg-[#38bdf8]/20 text-[#38bdf8] text-xs font-bold rounded-full mb-2">
+                <span className="inline-block px-4 py-1 bg-[#2fa0d1]/20 text-[#2fa0d1] text-xs font-bold rounded-full mb-2">
                   {photos[lightbox].category}
                 </span>
                 <p className="text-white font-display font-bold text-xl">{photos[lightbox].name}</p>
@@ -228,7 +228,7 @@ const PhotoGallery = () => {
               {/* Prev button */}
               {lightbox > 0 && (
                 <button onClick={() => setLightbox(lightbox - 1)}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-[#1e3a8a] flex items-center justify-center text-white transition-all duration-200 border border-white/20 hover:border-[#38bdf8] hover:scale-110">
+                  className="absolute left-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-[#1e3a8a] flex items-center justify-center text-white transition-all duration-200 border border-white/20 hover:border-[#2fa0d1] hover:scale-110">
                   <ArrowLeft size={20} />
                 </button>
               )}
@@ -236,7 +236,7 @@ const PhotoGallery = () => {
               {/* Next button */}
               {lightbox < photos.length - 1 && (
                 <button onClick={() => setLightbox(lightbox + 1)}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-[#1e3a8a] flex items-center justify-center text-white transition-all duration-200 border border-white/20 hover:border-[#38bdf8] hover:scale-110">
+                  className="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-[#1e3a8a] flex items-center justify-center text-white transition-all duration-200 border border-white/20 hover:border-[#2fa0d1] hover:scale-110">
                   <ArrowRight size={20} />
                 </button>
               )}
@@ -245,7 +245,7 @@ const PhotoGallery = () => {
               <div className="mt-4 flex gap-2 justify-center overflow-x-auto pb-1">
                 {photos.map((ph, idx) => (
                   <button key={idx} onClick={() => setLightbox(idx)}
-                    className={`shrink-0 w-14 h-10 rounded-lg overflow-hidden border-2 transition-all duration-200 ${idx === lightbox ? 'border-[#38bdf8] scale-110' : 'border-white/20 opacity-50 hover:opacity-100'}`}>
+                    className={`shrink-0 w-14 h-10 rounded-lg overflow-hidden border-2 transition-all duration-200 ${idx === lightbox ? 'border-[#2fa0d1] scale-110' : 'border-white/20 opacity-50 hover:opacity-100'}`}>
                     <img src={ph.src} alt={ph.name} className="w-full h-full object-cover" />
                   </button>
                 ))}

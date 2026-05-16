@@ -9,16 +9,11 @@ import projectViak from "@/assets/project_viak.jpg";
 const services = [
   {
     icon: Wrench, color: "#1e3a8a",
-    title: "Fabrication & Material Handling",
+    title: "Material Handling Equipments",
     desc: "We provide complete fabrication solutions along with efficient material handling systems for industrial applications.",
     tags: ["Pipe & Plate Fabrication", "Wheel Steering Systems", "Conveyor Turntables", "Custom Carts"],
   },
-  {
-    icon: Truck, color: "#1e5aa8",
-    title: "Fabrication of MHE",
-    desc: "Design and manufacturing of customized MHE solutions to optimize workflow and reduce manual effort.",
-    tags: ["Trolleys", "Pallet Systems", "Industrial Handling Equipment"],
-  },
+ 
   {
     icon: Cpu, color: "#1e3a8a",
     title: "Special Purpose Machines",
@@ -26,16 +21,16 @@ const services = [
     tags: ["Custom Machine Design", "Automation Systems", "Production Optimization"],
   },
   {
-    icon: Layers, color: "#1e5aa8",
+    icon: Layers, color: "#1a357e",
     title: "Press Machines",
     desc: "High-performance press machines designed for precision and durability in industrial operations.",
     tags: ["Hydraulic Press Machines", "Servo Press Machines", "Pneumatic Press Machines"],
   },
   {
     icon: CircleDot, color: "#1e3a8a",
-    title: "Tire Industries Solutions",
+    title: "Tyre Industries Solutions",
     desc: "Specialized solutions and machinery designed for tyre industry processes and related applications.",
-    tags: ["Tire Handling Systems", "Automation in Tire Production"],
+    tags: ["Tyre Handling Systems", "Automation in Tyre Production"],
   },
 ];
 
@@ -76,7 +71,7 @@ const Products = () => (
       label="What We Offer"
       title="Our"
       highlight="Products & Services"
-      desc="Explore our complete range of precision-engineered products and industrial services tailored for automotive, tire and process industries."
+      desc="Explore our complete range of precision-engineered products and industrial services tailored for automotive, Tyre and process industries."
       image={projectViak}
     />
 
@@ -108,8 +103,7 @@ const Products = () => (
                 {/* Content */}
                 <div className="flex-1 px-7 py-6">
                   <div className="flex items-start justify-between gap-4 mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#1e3a8a] group-hover:text-[#38bdf8] transition-colors duration-200">{s.title}</h3>
-                    <ArrowRight size={18} className="text-[#38bdf8] shrink-0 mt-1 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200" />
+                    <h3 className="font-display text-xl font-bold text-[#1e3a8a] group-hover:text-[#2fa0d1] transition-colors duration-200">{s.title}</h3>
                   </div>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-4">{s.desc}</p>
                   <div className="flex flex-wrap gap-2">
@@ -122,7 +116,7 @@ const Products = () => (
                 </div>
                 {/* Bottom sweep */}
                 <div className="absolute bottom-0 left-0 h-[3px] w-0 group-hover:w-full transition-all duration-500 rounded-b-2xl"
-                  style={{ background: `linear-gradient(to right, ${s.color}, #38bdf8)` }} />
+                  style={{ background: `linear-gradient(to right, ${s.color}, #2fa0d1)` }} />
               </motion.div>
             </ScrollReveal>
           ))}

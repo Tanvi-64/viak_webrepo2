@@ -165,7 +165,7 @@ const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
       >
         <div className="bg-[#1e3a8a] px-7 py-5 flex items-start justify-between">
           <div>
-            <p className="text-[#38bdf8] text-[10px] font-bold tracking-[0.25em] uppercase mb-1">Apply Now</p>
+            <p className="text-[#2fa0d1] text-[10px] font-bold tracking-[0.25em] uppercase mb-1">Apply Now</p>
             <h3 className="font-display text-xl font-bold text-white">{job.title}</h3>
           </div>
           <button onClick={onClose} className="text-white/60 hover:text-white">
@@ -175,7 +175,7 @@ const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
 
         {submitted ? (
           <div className="flex flex-col items-center justify-center py-14 px-7 gap-4">
-            <CheckCircle2 size={56} className="text-[#38bdf8]" />
+            <CheckCircle2 size={56} className="text-[#2fa0d1]" />
             <p className="font-display font-bold text-xl">Application Submitted!</p>
           </div>
         ) : (
@@ -275,7 +275,7 @@ const JobCard = ({ job, onApply }: { job: Job; onApply: () => void }) => {
                       <motion.li key={i} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05 }}
                         className="flex items-start gap-2 text-sm text-muted-foreground">
-                        <CheckCircle2 size={14} className="text-[#38bdf8] shrink-0 mt-0.5" />{r}
+                        <CheckCircle2 size={14} className="text-[#2fa0d1] shrink-0 mt-0.5" />{r}
                       </motion.li>
                     ))}
                   </ul>
@@ -289,7 +289,7 @@ const JobCard = ({ job, onApply }: { job: Job; onApply: () => void }) => {
                       <motion.li key={i} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05 }}
                         className="flex items-start gap-2 text-sm text-muted-foreground">
-                        <CheckCircle2 size={14} className="text-[#38bdf8] shrink-0 mt-0.5" />{r}
+                        <CheckCircle2 size={14} className="text-[#2fa0d1] shrink-0 mt-0.5" />{r}
                       </motion.li>
                     ))}
                   </ul>

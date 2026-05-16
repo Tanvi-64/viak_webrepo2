@@ -95,7 +95,7 @@ function CompanyVideoSection() {
                   </div>
                   <div className="flex-1 flex justify-center">
                     <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-0.5">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] animate-pulse" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#2fa0d1] animate-pulse" />
                       <span className="text-white/80 text-[10px] font-semibold tracking-widest uppercase">Viak Automation Systems</span>
                     </div>
                   </div>
@@ -141,7 +141,7 @@ function CompanyVideoSection() {
                   <div className="absolute bottom-0 left-0 right-0 px-4 py-3 flex items-center justify-between bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <button
                       onClick={togglePlay}
-                      className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 flex items-center justify-center hover:bg-[#38bdf8]/60 transition-colors"
+                      className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 flex items-center justify-center hover:bg-[#2fa0d1]/60 transition-colors"
                     >
                       {playing
                         ? <Pause size={14} className="text-white" fill="white" />
@@ -150,13 +150,13 @@ function CompanyVideoSection() {
                     <div className="flex items-center gap-2">
                       <button
                         onClick={toggleMute}
-                        className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 flex items-center justify-center hover:bg-[#38bdf8]/60 transition-colors"
+                        className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 flex items-center justify-center hover:bg-[#2fa0d1]/60 transition-colors"
                       >
                         {muted ? <VolumeX size={14} className="text-white" /> : <Volume2 size={14} className="text-white" />}
                       </button>
                       <button
                         onClick={openLightbox}
-                        className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 flex items-center justify-center hover:bg-[#38bdf8]/60 transition-colors"
+                        className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 flex items-center justify-center hover:bg-[#2fa0d1]/60 transition-colors"
                       >
                         <Maximize2 size={14} className="text-white" />
                       </button>
@@ -225,7 +225,7 @@ function CompanyVideoSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 bg-black flex items-center justify-center p-0 sm:p-4 sm:bg-black/90 sm:backdrop-blur-sm"
             onClick={closeLightbox}
           >
             <motion.div
@@ -233,7 +233,7 @@ function CompanyVideoSection() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.85, opacity: 0 }}
               transition={{ type: "spring", stiffness: 220, damping: 24 }}
-              className="relative w-full max-w-5xl rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+              className="relative w-full h-full sm:h-auto sm:max-w-5xl sm:rounded-2xl overflow-hidden shadow-2xl border-0 sm:border sm:border-white/10 flex items-center"
               onClick={(e) => e.stopPropagation()}
             >
               <video
@@ -242,12 +242,13 @@ function CompanyVideoSection() {
                 className="w-full aspect-video object-cover"
                 controls
                 autoPlay
+                playsInline
               />
               <button
                 onClick={closeLightbox}
-                className="absolute top-3 right-3 w-9 h-9 rounded-full bg-black/60 border border-white/30 flex items-center justify-center hover:bg-black/80 transition-colors"
+                className="absolute top-3 right-3 w-10 h-10 rounded-full bg-black/60 border border-white/30 flex items-center justify-center hover:bg-black/80 transition-colors z-10"
               >
-                <X size={16} className="text-white" />
+                <X size={18} className="text-white" />
               </button>
             </motion.div>
           </motion.div>
@@ -269,9 +270,9 @@ function CoreValuesSlider() {
         {doubled.map((v, i) => (
           <div
             key={i}
-            className="w-56 sm:w-64 shrink-0 bg-white rounded-2xl shadow-md px-5 sm:px-7 py-6 sm:py-8 border border-[#38bdf8]/20"
+            className="w-56 sm:w-64 shrink-0 bg-white rounded-2xl shadow-md px-5 sm:px-7 py-6 sm:py-8 border border-[#2fa0d1]/20"
           >
-            <div className="w-10 h-1 bg-[#38bdf8] rounded-full mb-4" />
+            <div className="w-10 h-1 bg-[#2fa0d1] rounded-full mb-4" />
             <p className="font-display font-bold text-[#1e3a8a] text-base sm:text-lg mb-2">{v.title}</p>
             <p className="text-slate-500 text-sm leading-relaxed">{v.desc}</p>
           </div>
@@ -317,18 +318,19 @@ const About = () => (
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-              className="relative z-10 bg-[#1e3a8a] rounded-2xl shadow-2xl px-6 sm:px-10 py-8 sm:py-10 flex flex-col justify-center md:flex-1 md:-ml-20"
+              className="relative z-10 rounded-2xl shadow-2xl px-6 sm:px-10 py-8 sm:py-10 flex flex-col justify-center md:flex-1 md:-ml-20"
+              style={{ background: "linear-gradient(90deg, #2fa0d1ff 0%, #1a357eff 100%)" }}
             >
               <div>
                 <motion.div
-                  className="absolute top-0 right-0 w-40 h-40 rounded-bl-full bg-[#38bdf8]/10 pointer-events-none"
+                  className="absolute top-0 right-0 w-40 h-40 rounded-bl-full bg-[#2fa0d1]/10 pointer-events-none"
                   animate={{ scale: [1, 1.15, 1], opacity: [0.5, 1, 0.5] }}
                   transition={{ duration: 4, repeat: Infinity }}
                 />
                 <div className="flex items-start gap-3 mb-5">
-                  <div className="w-1 h-14 bg-[#38bdf8] rounded-full shrink-0 mt-1" />
+                  <div className="w-1 h-14 bg-[#2fa0d1] rounded-full shrink-0 mt-1" />
                   <div>
-                    <p className="text-[#38bdf8] text-[10px] font-bold tracking-[0.28em] uppercase mb-1">
+                    <p className="text-[#2fa0d1] text-[10px] font-bold tracking-[0.28em] uppercase mb-1">
                       Precision Engineering Through Excellence
                     </p>
                     <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-wide uppercase leading-tight">
@@ -343,7 +345,7 @@ const About = () => (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   {[
                     { icon: Target, title: "Precision Delivery", desc: "Sub-1mm accuracy across all manufactured components and systems." },
-                    { icon: Award,  title: "50+ Clients Served", desc: "Trusted by leading automotive and tire manufacturers across India." },
+                    { icon: Award,  title: "50+ Clients Served", desc: "Trusted by leading automotive and Tyre manufacturers across India." },
                   ].map((item, i) => (
                     <motion.div
                       key={item.title}
@@ -353,8 +355,8 @@ const About = () => (
                       transition={{ duration: 0.5, delay: 0.5 + i * 0.12 }}
                       className="flex items-start gap-3"
                     >
-                      <div className="w-10 h-10 rounded-lg border border-[#38bdf8]/40 flex items-center justify-center shrink-0 mt-0.5">
-                        <item.icon size={17} className="text-[#38bdf8]" />
+                      <div className="w-10 h-10 rounded-lg border border-[#2fa0d1]/40 flex items-center justify-center shrink-0 mt-0.5">
+                        <item.icon size={17} className="text-[#2fa0d1]" />
                       </div>
                       <div>
                         <p className="text-white font-bold text-sm">{item.title}</p>
@@ -387,18 +389,19 @@ const About = () => (
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-              className="relative z-10 bg-[#1e3a8a] rounded-2xl shadow-2xl px-6 sm:px-10 py-8 sm:py-10 flex flex-col justify-center md:flex-1 md:-mr-20"
+              className="relative z-10 rounded-2xl shadow-2xl px-6 sm:px-10 py-8 sm:py-10 flex flex-col justify-center md:flex-1 md:-mr-20"
+              style={{ background: "linear-gradient(90deg, #2fa0d1ff 0%, #1a357eff 100%)" }}
             >
               <div>
                 <motion.div
-                  className="absolute top-0 left-0 w-40 h-40 rounded-br-full bg-[#38bdf8]/10 pointer-events-none"
+                  className="absolute top-0 left-0 w-40 h-40 rounded-br-full bg-[#2fa0d1]/10 pointer-events-none"
                   animate={{ scale: [1, 1.15, 1], opacity: [0.5, 1, 0.5] }}
                   transition={{ duration: 4, repeat: Infinity, delay: 1 }}
                 />
                 <div className="flex items-start gap-3 mb-5">
-                  <div className="w-1 h-14 bg-[#38bdf8] rounded-full shrink-0 mt-1" />
+                  <div className="w-1 h-14 bg-[#2fa0d1] rounded-full shrink-0 mt-1" />
                   <div>
-                    <p className="text-[#38bdf8] text-[10px] font-bold tracking-[0.28em] uppercase mb-1">
+                    <p className="text-[#2fa0d1] text-[10px] font-bold tracking-[0.28em] uppercase mb-1">
                       Innovation Driven by Purpose
                     </p>
                     <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-wide uppercase leading-tight">
@@ -423,8 +426,8 @@ const About = () => (
                       transition={{ duration: 0.5, delay: 0.5 + i * 0.12 }}
                       className="flex items-start gap-3"
                     >
-                      <div className="w-10 h-10 rounded-lg border border-[#38bdf8]/40 flex items-center justify-center shrink-0 mt-0.5">
-                        <item.icon size={17} className="text-[#38bdf8]" />
+                      <div className="w-10 h-10 rounded-lg border border-[#2fa0d1]/40 flex items-center justify-center shrink-0 mt-0.5">
+                        <item.icon size={17} className="text-[#2fa0d1]" />
                       </div>
                       <div>
                         <p className="text-white font-bold text-sm">{item.title}</p>
@@ -522,7 +525,7 @@ const About = () => (
               <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
                 className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2 flex items-center gap-2 shadow-lg">
-                <div className="w-2 h-2 rounded-full bg-[#38bdf8] animate-pulse" />
+                <div className="w-2 h-2 rounded-full bg-[#2fa0d1] animate-pulse" />
                 <span className="text-[#1e3a8a] font-bold text-xs tracking-wide uppercase">Viak Automation — Pune</span>
               </motion.div>
             </motion.div>
@@ -554,9 +557,7 @@ const About = () => (
                     transition={{ duration: 0.4, delay: i * 0.06 }}
                     className="flex items-start gap-3 group"
                   >
-                    <div className="w-6 h-6 rounded-md gradient-bg flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
-                      <span className="text-white font-bold text-xs">{String(i + 1).padStart(2, "0")}</span>
-                    </div>
+                    <div className="w-3 h-3 rounded-full gradient-bg shrink-0 mt-1.5 group-hover:scale-125 transition-transform" />
                     <span className="text-foreground text-sm font-medium leading-relaxed">{item}</span>
                   </motion.li>
                 ))}
@@ -571,11 +572,11 @@ const About = () => (
     <section className="py-14 sm:py-20 bg-white overflow-hidden">
       <div className="container mx-auto px-4 mb-10 sm:mb-12">
         <ScrollReveal className="text-center">
-          <span className="text-[#38bdf8] font-semibold text-sm tracking-[0.25em] uppercase">What Drives Us</span>
+          <span className="text-[#2fa0d1] font-semibold text-sm tracking-[0.25em] uppercase">What Drives Us</span>
           <h2 className="font-display text-2xl sm:text-3xl md:text-5xl font-extrabold mt-2 text-[#1e3a8a] uppercase tracking-wide">
             Our Core Values
           </h2>
-          <div className="w-16 h-1 bg-[#38bdf8] mx-auto mt-4 rounded-full" />
+          <div className="w-16 h-1 bg-[#2fa0d1] mx-auto mt-4 rounded-full" />
         </ScrollReveal>
       </div>
       <CoreValuesSlider />

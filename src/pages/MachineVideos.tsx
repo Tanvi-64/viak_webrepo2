@@ -19,7 +19,13 @@ type Video = typeof videos[0];
 function VideoCard({ v, index, onOpen }: { v: Video; index: number; onOpen: () => void }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [hovered, setHovered] = useState(false);
-   
+
+  const handleLoadedMetadata = () => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = 1.5;
+    }
+  };
+
   const handleMouseEnter = () => {
     setHovered(true);
     videoRef.current?.play();
@@ -29,7 +35,7 @@ function VideoCard({ v, index, onOpen }: { v: Video; index: number; onOpen: () =
     setHovered(false);
     if (videoRef.current) {
       videoRef.current.pause();
-      videoRef.current.currentTime = 0;
+      videoRef.current.currentTime = 1.5;
     }
   };
 
@@ -46,13 +52,13 @@ function VideoCard({ v, index, onOpen }: { v: Video; index: number; onOpen: () =
       onClick={onOpen}
     >
       {/* Animated top accent */}
-      <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#38bdf8] to-[#1e3a8a] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20" />
+      <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#2fa0d1] to-[#1e3a8a] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20" />
 
       {/* Video area */}
       <div className="relative aspect-video overflow-hidden bg-[#0a1628]">
-        {/* Static gradient placeholder shown before hover */}
+        {/* Dark overlay — only shown on hover to dim during playback */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-[#1e3a8a]/60 to-[#0a1628]"
+          className="absolute inset-0 bg-gradient-to-br from-[#1e3a8a]/40 to-[#0a1628]/60 z-[1]"
           animate={{ opacity: hovered ? 0 : 1 }}
           transition={{ duration: 0.35 }}
         />
@@ -79,7 +85,7 @@ function VideoCard({ v, index, onOpen }: { v: Video; index: number; onOpen: () =
           )}
         </AnimatePresence>
 
-        {/* Inline video */}
+        {/* Inline video — always visible for thumbnail */}
         <video
           key={v.src}
           ref={videoRef}
@@ -87,8 +93,9 @@ function VideoCard({ v, index, onOpen }: { v: Video; index: number; onOpen: () =
           muted
           loop
           playsInline
+          preload="metadata"
+          onLoadedMetadata={handleLoadedMetadata}
           className="absolute inset-0 w-full h-full object-cover"
-          style={{ opacity: hovered ? 1 : 0, transition: "opacity 0.4s ease" }}
         />
 
         {/* Bottom gradient */}
@@ -119,16 +126,16 @@ function VideoCard({ v, index, onOpen }: { v: Video; index: number; onOpen: () =
         <div>
           <p className="font-display font-bold text-white text-sm leading-snug">{v.title}</p>
           <div className="flex items-center gap-2 mt-2">
-            <span className="text-[10px] font-bold tracking-widest uppercase text-[#38bdf8] bg-[#38bdf8]/10 border border-[#38bdf8]/30 rounded-full px-2.5 py-0.5">
+            <span className="text-[10px] font-bold tracking-widest uppercase text-[#2fa0d1] bg-[#2fa0d1]/10 border border-[#2fa0d1]/30 rounded-full px-2.5 py-0.5">
               {v.tag}
             </span>
           </div>
         </div>
         <motion.div
-          className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-[#38bdf8]/20 group-hover:border-[#38bdf8]/40 transition-colors duration-300"
+          className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-[#2fa0d1]/20 group-hover:border-[#2fa0d1]/40 transition-colors duration-300"
           whileHover={{ scale: 1.15 }}
         >
-          <Volume2 size={13} className="text-white/50 group-hover:text-[#38bdf8] transition-colors duration-300" />
+          <Volume2 size={13} className="text-white/50 group-hover:text-[#2fa0d1] transition-colors duration-300" />
         </motion.div>
       </div>
     </motion.div>
@@ -156,7 +163,7 @@ function VideoModal({ v, onClose }: { v: Video; onClose: () => void }) {
 
       {/* Glow orbs */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#1e3a8a]/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#38bdf8]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#2fa0d1]/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Modal container */}
       <motion.div
@@ -168,7 +175,7 @@ function VideoModal({ v, onClose }: { v: Video; onClose: () => void }) {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Glowing border ring */}
-        <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-br from-[#38bdf8]/50 via-[#1e3a8a]/30 to-[#38bdf8]/20 pointer-events-none" />
+        <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-br from-[#2fa0d1]/50 via-[#1e3a8a]/30 to-[#2fa0d1]/20 pointer-events-none" />
 
         <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-[#0a1628]">
           <video
@@ -181,7 +188,7 @@ function VideoModal({ v, onClose }: { v: Video; onClose: () => void }) {
           {/* Title bar */}
           <div className="px-6 py-4 flex items-center justify-between bg-[#0a1628] border-t border-white/5">
             <div className="flex items-center gap-3">
-              <span className="text-[10px] font-bold tracking-widest uppercase text-[#38bdf8] bg-[#38bdf8]/10 border border-[#38bdf8]/30 rounded-full px-2.5 py-0.5">
+              <span className="text-[10px] font-bold tracking-widest uppercase text-[#2fa0d1] bg-[#2fa0d1]/10 border border-[#2fa0d1]/30 rounded-full px-2.5 py-0.5">
                 {v.tag}
               </span>
               <p className="font-display font-bold text-white text-sm">{v.title}</p>

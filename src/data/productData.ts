@@ -1,22 +1,15 @@
 // ── SPM images
-import spm01 from "@/assets/spm/spm_01.jpg";
-import spm02 from "@/assets/spm/spm_02.jpeg";
-import spm03 from "@/assets/spm/spm_03.jpeg";
-import spm04 from "@/assets/spm/spm_04.jpeg";
-import spm05 from "@/assets/spm/spm_05.jpg";
-import spm06 from "@/assets/spm/spm_06.jpeg";
-import spm07 from "@/assets/spm/spm_07.jpeg";
-import spm08 from "@/assets/spm/spm_08.jpg";
-import spm09 from "@/assets/spm/spm_09.jpg";
-import spm10 from "@/assets/spm/spm_10.jpeg";
-import spm11 from "@/assets/spm/spm_11.jpeg";
-import spm12 from "@/assets/spm/spm_12.jpeg";
-import spm13 from "@/assets/spm/spm_13.png";
-import spm14 from "@/assets/spm/spm_14.png";
+import spm01 from "@/assets/spm/spm1.png";
+import spm02 from "@/assets/spm/spm2.png";
+import spm03 from "@/assets/spm/spm3.png";
+import spm04 from "@/assets/spm/spm4.jpeg";
+import spm05 from "@/assets/spm/spm5.png";
+import spm06 from "@/assets/spm/spm6.png";
+
 
 // ── Hydraulics images
-import hy1 from "@/assets/hydraulics/hy1.png";
-import hy2 from "@/assets/hydraulics/hy2.png";
+import hy_1 from "@/assets/hydraulics/hy_1.png";
+import hy_2 from "@/assets/hydraulics/hy_2.png";
 import hy3 from "@/assets/hydraulics/hy3.jpeg";
 import hy5 from "@/assets/hydraulics/hy5.png";
 
@@ -72,48 +65,64 @@ export const productData: Record<string, ProductItem> = {
     desc: "Custom-built special purpose machines tailored for specific production needs such as welding, drilling, assembly, tapping, and multi-station automation.",
     items: [],
     gallery: [
-      { src: spm01, name: "100 Ton Hydraulic Press",           desc: "Heavy-duty 100-ton hydraulic press designed for high-force pressing, forming and assembly operations in automotive and industrial manufacturing." },
-      { src: spm02, name: "20 Ton Hydraulic Press",            desc: "Compact 20-ton hydraulic press for precision pressing, fitting and stamping tasks. Ideal for medium-load production lines requiring consistent force control." },
-      { src: spm03, name: "Cow Turn Table",                    desc: "Rotary turn table machine enabling continuous multi-station processing. Increases throughput by allowing simultaneous loading, machining and unloading." },
-      { src: spm04, name: "Cured Hose Cutting SPM",            desc: "Special purpose machine for accurate cutting of cured rubber hoses to precise lengths. Ensures clean cuts with minimal material waste." },
-      { src: spm05, name: "Cut-Off Wheel Turn Table",          desc: "Automated turn table integrated with cut-off wheel mechanism for high-speed, repeatable cutting of circular and tubular components." },
-      { src: spm06, name: "Cutting Wheel Pressing Auto Machine", desc: "Fully automated machine combining cutting wheel operation with pressing action. Designed for high-volume production with servo-controlled precision." },
-      { src: spm07, name: "Hydraulic Press Machine",           desc: "Versatile hydraulic press suitable for deep drawing, punching, blanking and assembly. Built for durability with programmable pressure control." },
-      { src: spm08, name: "Proofload Testing Machine 1",       desc: "Proofload testing machine for verifying structural integrity and load-bearing capacity of components. Ensures compliance with safety and quality standards." },
-      { src: spm09, name: "Proofload Testing Machine 2",       desc: "Advanced proofload testing setup with digital load monitoring for accurate force measurement and traceability in quality assurance processes." },
-      { src: spm10, name: "S201 Assembly Machine",             desc: "S201 special purpose machine engineered for a specific client process. Features custom tooling, pneumatic actuation and PLC-based control." },
-      { src: spm11, name: "SPM Unit 1",                        desc: "Custom-built SPM unit designed for automated part handling and processing. Integrates sensors and actuators for reliable, repeatable cycle performance." },
-      { src: spm12, name: "SPM Unit 2",                        desc: "Multi-function SPM unit combining material feeding, processing and ejection in a single automated cycle for improved production efficiency." },
-      { src: spm13, name: "Wheel Stacking Machine",            desc: "Automated wheel stacking machine for organised stacking and transfer of wheel components. Reduces manual handling and improves line flow in tire plants." },
-      { src: spm14, name: "Wire Guiding Machine",              desc: "Precision wire guiding machine ensuring accurate wire placement and tension control during winding or assembly operations." },
-    ],
+  {
+    src: spm01,
+    name: "Cow Turn Table",
+    desc: "A uniquely engineered solution for abrasive wheel manufacturers, this servo-integrated machine delivers unmatched precision for wheels ranging from 720mm to 450mm in diameter. Using a finely machined rotary turntable, granule mixing and molding are completed with a single click."
+  },
+  {
+    src: spm02,
+    name: "S201",
+    desc: "This fully automated hydraulic press machine (10 TON capacity) is designed for precision assembly and testing operations. It features a 6-station rotary system for inspection, proof loading, pressing, crimping, bolt fitting, and laser marking. Equipped with Siemens HMI & PLC along with LVDTs and load cells, the system ensures accurate, reliable, and efficient production."
+  },
+  {
+    src: spm03,
+    name: "Wheel Stacking Machine",
+    desc: "The Wheel Stacking Machine is a semi-automated solution designed to improve efficiency, accuracy, and consistency in stacking grinding wheels. It minimizes operator dependency and manual effort by integrating advanced automation technologies for reliable and high-quality output."
+  },
+  {
+    src: spm04,
+    name: "Corrugated Tube Cutting Machine",
+    desc: "A Corrugated Tube Cutting Machine is a specialized piece of equipment designed for the precise and efficient cutting of corrugated tubing, commonly used in wiring harnesses, cable management systems, and protective conduits"
+  },
+  {
+    src: spm05,
+    name: "Cured Hose Cutting Machine",
+    desc: "Boost productivity in rubber hose manufacturing with smart automation. The Cured Hose Rubber Cutting Machine is designed to streamline post-curing operations, delivering precise cutting while reducing manual effort and improving overall efficiency."
+  },
+  {
+    src: spm06,
+    name: "ProofLoad Testing Machine",
+    desc: "This fully automated 2 TON to 100 Ton hydraulic press/Bervo Based system is designed for precise and efficient component processing. With Siemens HMI & PLC and integrated sensors, it performs automated pick & place, pressing, marking, and sorting, ensuring consistent quality with minimal manual effort."
+  },
+],
   },
 
   // ── HYDRAULICS ───────────────────────────────────────────────────────
   "hydraulics": {
     title: "Hydraulics, Pneumatics & Servo Presses",
-    image: hy1,
+    image: hy_1,
     desc: "Design and manufacturing of hydraulic, pneumatic, and servo presses for precision forming, pressing, clamping, and automated industrial operations.",
     items: [],
    gallery: [
     {
-      src: hy1,
-      name: "100 Ton Hydraulic-02",
+      src: hy_1,
+      name: "100 Ton Hydraulic",
       desc: "Heavy-duty 100 ton hydraulic press designed for deep drawing, metal forming, and high-force assembly operations. Provides adjustable pressure, stroke length, and dwell time for accurate and repeatable performance."
     },
     {
-      src: hy2,
-      name: "20 Ton Hydraulic-01",
+      src: hy_2,
+      name: "20 Ton Hydraulic",
       desc: "Compact 20 ton hydraulic press suitable for light forming, punching, and assembly tasks. Engineered for smooth pressure application with precise control in low to medium force operations."
     },
     {
       src: hy3,
-      name: "Hydraulic Press MC-04",
+      name: "Hydraulic Press MC",
       desc: "Multi-column hydraulic press built for stable load distribution during precision forming and pressing applications. Rigid frame construction ensures alignment accuracy and consistent pressing results."
     },
     {
       src: hy5,
-      name: "Servo Based MPLM-03",
+      name: "Servo Based MPLM",
       desc: "Servo-driven press system offering precise control over force, speed, and position throughout the stroke. Ideal for applications requiring programmable motion profiles and real-time process monitoring."
     },
   ],
@@ -128,12 +137,12 @@ export const productData: Record<string, ProductItem> = {
  gallery: [
     {
       src: ty1,
-      name: "GC Cather-1",
+      name: "GC Cather",
       desc: "Automated tyre component catching and positioning unit designed to receive, align, and transfer green tyre components safely between stations. Ensures precise handling and reduces manual intervention in high-cycle operations."
     },
     {
       src: ty2,
-      name: "Bead_Set Ring",
+      name: "Bead Set Ring",
       desc: "Precision-engineered bead set ring fixture used for accurate positioning and holding of bead rings during tyre building. Ensures concentric alignment and dimensional stability in bead assembly operations."
     },
     {
@@ -148,7 +157,7 @@ export const productData: Record<string, ProductItem> = {
     },
     {
       src: ty5,
-      name: "Rubber Edge Gum Folding Unit-2",
+      name: "Rubber Edge Gum Folding Unit",
       desc: "Enhanced gum folding mechanism with adjustable guides and pressure control for handling different rubber sheet thicknesses. Improves repeatability and reduces material wastage."
     },
     {
@@ -223,7 +232,7 @@ gallery: [
   },
   {
     src: mhe6,
-    name: "Scissor Lift – 2",
+    name: "Scissor Lift",
     desc: "Compact scissor lift unit designed for precise elevation control and ergonomic material handling in confined industrial spaces."
   },
   {
@@ -264,43 +273,4 @@ gallery: [
 ]
   },
 
-  // ── PICK & PLACE ─────────────────────────────────────────────────────
-  "pick-place": {
-    title: "Pick and Place Units",
-    image: "/pick_place/pickplace gantry.JPG",
-    desc: "Gantry, vacuum and robotic pick & place systems with servo and pneumatic control for precise, high-speed material handling.",
-    items: [
-      "Gantry Pick & Place",
-      "Vacuum Rubber Sheet Pick & Place",
-      "Robotic Pick & Place with Sensors",
-      "Oil Dipping Station Integration",
-    ],
-    gallery: [
-      { src: "/pick_place/pickplace gantry.JPG", name: "Gantry Pick & Place Unit", desc: "Heavy-duty gantry-type pick & place unit with servo-driven X-Y-Z axes for precise component transfer across long travel distances. Designed for high-cycle automotive and tire industry applications with pneumatic gripper end-effectors." },
-    ],
-  },
-
-  // ── WASHING MACHINE PARTS ────────────────────────────────────────────
-  "washing-machine-parts": {
-    title: "Industrial Washing Machine Parts",
-    image: "/washing/washing_01.jpeg",
-    desc: "Precision-engineered SS304/SS316 components for industrial washing systems with sub-1mm runout accuracy.",
-    items: [
-      "Rotation Frame & Auto Clamping Frame",
-      "Sliding Doors (Manual & Pneumatic)",
-      "Work Tank, Gantry Dipping Station",
-      "Pallets, Fencing, Automatic Conveyor",
-    ],
-    gallery: [
-      { src: "/washing/washing_01.jpeg", name: "Rotation Frame",               desc: "Heavy-duty rotation frame fabricated in SS304 with precision-balanced design achieving sub-1mm runout accuracy." },
-      { src: "/washing/washing_02.jpeg", name: "Auto Clamping Rotation Frame", desc: "Pneumatically actuated auto-clamping rotation frame for hands-free basket loading during high-speed rotation." },
-      { src: "/washing/washing_03.jpeg", name: "Sliding Door — Pneumatic",     desc: "Pneumatic sliding door for washing machine enclosures with soft-close damping and proximity sensing." },
-      { src: "/washing/washing_04.jpeg", name: "Work Tank 500L",               desc: "500-litre SS316 work tank with reinforced welded construction, drain valve and level sensor ports." },
-      { src: "/washing/washing_05.jpeg", name: "Gantry Dipping Station",       desc: "Motorised gantry with basket dipping station for controlled immersion of components into wash, rinse and passivation tanks." },
-      { src: "/washing/washing_06.jpeg", name: "Oil Dipping Station",          desc: "Dedicated oil dipping station with controlled immersion depth, drip-return tray and oil level monitoring." },
-      { src: "/washing/washing_07.jpeg", name: "Pallet for Baskets",           desc: "Custom-engineered SS304 pallets designed to hold and transport washing baskets accurately through conveyor-based lines." },
-      { src: "/washing/washing_08.jpeg", name: "Sliding Door — Manual",        desc: "Manually operated sliding door with stainless steel frame and UHMW guide rails." },
-      { src: "/washing/washing_09.jpeg", name: "Washing System Assembly",      desc: "Complete washing system assembly integrating rotation frame, work tank, gantry station and conveyor." },
-    ],
-  },
 };

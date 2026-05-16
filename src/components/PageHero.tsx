@@ -25,13 +25,14 @@ const PageHero = ({ label, title, highlight, desc, image, descClassName }: PageH
           initial={{ opacity: 0, x: -60 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="inline-block bg-[#1e3a8a]/85 backdrop-blur-md px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-6 rounded-r-2xl border-l-4 border-[#38bdf8] max-w-[90vw] sm:max-w-sm md:max-w-xl"
+          className="inline-block backdrop-blur-md px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-6 rounded-r-2xl border-l-4 border-[#2fa0d1] max-w-[90vw] sm:max-w-sm md:max-w-xl"
+          style={{ background: "linear-gradient(90deg, #2fa0d1cc 0%, #1a357ecc 100%)" }}
         >
           <motion.p
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-[#38bdf8] font-semibold text-[9px] sm:text-[10px] tracking-[0.28em] uppercase mb-1"
+            className="text-[#2fa0d1] font-semibold text-[9px] sm:text-[10px] tracking-[0.28em] uppercase mb-1"
           >
             {label}
           </motion.p>
@@ -41,7 +42,7 @@ const PageHero = ({ label, title, highlight, desc, image, descClassName }: PageH
             transition={{ delay: 0.3 }}
             className="font-display text-lg sm:text-2xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight"
           >
-            {title} <span className="text-[#38bdf8]">{highlight}</span>
+            {title} <span className="text-[#2fa0d1]">{highlight}</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, x: -20 }}

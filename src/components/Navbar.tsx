@@ -50,12 +50,12 @@ const ResourcesDropdown = () => {
   return (
     <div ref={ref} className="relative h-full flex items-center"
       onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
-      <button className={`relative h-full flex items-center gap-1 px-3 lg:px-5 text-sm font-semibold tracking-wide transition-colors duration-200 ${isActive ? "text-white" : "text-white/70 hover:text-white"}`}>
+      <button className={`relative h-full flex items-center gap-1 px-3 lg:px-5 text-sm lg:text-base xl:text-lg font-semibold tracking-wide transition-colors duration-200 ${isActive ? "text-white" : "text-white/70 hover:text-white"}`}>
         Resources
         <motion.span animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.2 }}>
           <ChevronDown size={13} />
         </motion.span>
-        {isActive && <span className="absolute bottom-0 left-3 right-3 h-[3px] bg-[#38bdf8] rounded-t-sm" />}
+        {isActive && <span className="absolute bottom-0 left-3 right-3 h-[3px] bg-[#2fa0d1] rounded-t-sm" />}
       </button>
       <AnimatePresence>
         {open && (
@@ -79,13 +79,13 @@ const ResourcesDropdown = () => {
                   <motion.div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
                     style={{ background: "#e8f0fe" }}
                     whileHover={{ scale: 1.1, rotate: 5 }} transition={{ type: "spring", stiffness: 300 }}>
-                    <item.icon size={18} className="text-[#1e3a8a] group-hover:text-[#38bdf8] transition-colors duration-200" />
+                    <item.icon size={18} className="text-[#1e3a8a] group-hover:text-[#2fa0d1] transition-colors duration-200" />
                   </motion.div>
                   <div className="flex-1">
                     <p className="text-gray-800 group-hover:text-[#1e3a8a] text-sm font-semibold transition-colors duration-200">{item.label}</p>
                     <p className="text-gray-400 text-xs mt-0.5">{item.desc}</p>
                   </div>
-                  <ArrowRight size={13} className="text-[#38bdf8] opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200 shrink-0" />
+                  <ArrowRight size={13} className="text-[#2fa0d1] opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200 shrink-0" />
                 </Link>
               </motion.div>
             ))}
@@ -197,8 +197,8 @@ const Navbar = () => {
                     (link.to === "/products" && location.pathname.startsWith("/products"));
                   return (
                     <Link key={link.to} to={link.to}
-                      className={`relative h-full flex items-center px-3 lg:px-5 text-xs lg:text-sm font-semibold tracking-wide transition-colors duration-200 ${isActive ? "text-white" : "text-white/70 hover:text-white"}`}>
-                      {isActive && <span className="absolute bottom-0 left-3 right-3 h-[3px] bg-[#38bdf8] rounded-t-sm" />}
+                      className={`relative h-full flex items-center px-3 lg:px-5 text-sm lg:text-base xl:text-lg font-semibold tracking-wide transition-colors duration-200 ${isActive ? "text-white" : "text-white/70 hover:text-white"}`}>
+                      {isActive && <span className="absolute bottom-0 left-3 right-3 h-[3px] bg-[#2fa0d1] rounded-t-sm" />}
                       {link.label}
                     </Link>
                   );
@@ -230,7 +230,7 @@ const Navbar = () => {
               <div className="flex flex-col p-4 gap-1">
                 {navLinks.map((link) => (
                   <Link key={link.to} to={link.to}
-                    className={`px-4 py-3 rounded-lg text-sm font-semibold transition-all ${
+                    className={`px-4 py-3 rounded-lg text-base font-semibold transition-all ${
                       location.pathname === link.to || (link.to === "/products" && location.pathname.startsWith("/products"))
                         ? "bg-[#1e3a8a] text-white"
                         : "text-gray-700 hover:bg-[#e8f0fe] hover:text-[#1e3a8a]"
@@ -239,11 +239,11 @@ const Navbar = () => {
                   </Link>
                 ))}
                 <Link to="/resources/videos"
-                  className="flex items-center gap-2 px-4 py-3 rounded-lg text-sm font-semibold text-gray-700 hover:bg-[#e8f0fe] hover:text-[#1e3a8a] transition-all">
+                  className="flex items-center gap-2 px-4 py-3 rounded-lg text-base font-semibold text-gray-700 hover:bg-[#e8f0fe] hover:text-[#1e3a8a] transition-all">
                   <Video size={14} className="text-[#1e3a8a]" /> Machine Videos
                 </Link>
                 <Link to="/resources/gallery"
-                  className="flex items-center gap-2 px-4 py-3 rounded-lg text-sm font-semibold text-gray-700 hover:bg-[#e8f0fe] hover:text-[#1e3a8a] transition-all">
+                  className="flex items-center gap-2 px-4 py-3 rounded-lg text-base font-semibold text-gray-700 hover:bg-[#e8f0fe] hover:text-[#1e3a8a] transition-all">
                   <Images size={14} className="text-[#1e3a8a]" /> Photo Gallery
                 </Link>
                 <Link to="/contact"

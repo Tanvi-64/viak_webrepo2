@@ -5,13 +5,13 @@ const socials = [
   {
     icon: Instagram,
     label: "Instagram",
-    href: "https://www.instagram.com/viak_automation/",
+    href: "https://www.instagram.com/viakautomationsystems?igsh=MXh6aW11cWJyZWh4Nw==",
     hoverClass: "hover:bg-gradient-to-br hover:from-purple-500 hover:via-pink-500 hover:to-orange-400",
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
-    href: "https://www.linkedin.com/company/viak-automation/",
+    href: "https://www.linkedin.com/company/viak-automation-systems-pvt-ltd/",
     hoverClass: "hover:bg-[#0077b5]",
   },
 ];

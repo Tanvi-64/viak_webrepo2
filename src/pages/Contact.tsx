@@ -63,7 +63,7 @@ const Contact = () => {
 
           {/* ── Top: Let's Talk info strip ── */}
           <ScrollReveal className="mb-12">
-            <div className="flex flex-col md:flex-row md:items-center gap-6 p-8 rounded-2xl bg-[#1e3a8a] shadow-xl">
+            <div className="flex flex-col md:flex-row md:items-center gap-6 p-8 rounded-2xl shadow-xl" style={{ background: "linear-gradient(90deg, #2fa0d1ff 0%, #1a357eff 100%)" }}>
               <div className="flex-1">
                 <h3 className="font-display text-2xl font-bold text-white mb-2">Let's Talk</h3>
                 <p className="text-white/65 text-sm leading-relaxed max-w-md">
@@ -78,7 +78,7 @@ const Contact = () => {
                 ].map(({ icon: Icon, label }) => (
                   <div key={label} className="flex items-center gap-3">
                     <div className="w-9 h-9 rounded-lg bg-white/15 flex items-center justify-center shrink-0">
-                      <Icon size={16} className="text-[#38bdf8]" />
+                      <Icon size={16} className="text-[#2fa0d1]" />
                     </div>
                     <span className="text-white/80 text-xs font-medium">{label}</span>
                   </div>
